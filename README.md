@@ -138,7 +138,9 @@ Note that 3-letter menu codes should be prefixed with the character '['. Likewis
 ### Example: 
 <code>SystemSetting("[BCM");  // BCM: Enable all 1D codes excl. add-on</code>
 
-# Porting existing OPN-2006 / PX-20 / RS-3000 applications
+# Porting existing applications
+
+When porting applications of the OPN-200x, PX-20 and RS-3000 please note the following differences
 
 ## New Features in OPN-6000 / OPN-2500
 
