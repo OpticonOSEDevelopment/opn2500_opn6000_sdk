@@ -4,13 +4,12 @@ This is the official SDK from Opticon Sensors Europe BV for the Companion Scanne
 
 The prerequisites for using this SDK are:
 - Latest SDK files from this repository
-- SEGGER Embedded Studio for ARM (download from here: https://www.segger.com/downloads/embedded-studio/)
-- Appload firmware upload application for Windows (https://www.opticon.com/support/Appload/Appload%20Setup.exe)
-
-- Opticon USB Drivers (download from here: https://www.opticon.com/support/Drivers/USB%20Drivers%20Installer.exe)
+- `SEGGER Embedded Studio for ARM` can download from here: [Segger IDE](https://www.segger.com/downloads/embedded-studio/)
+- `Appload` firmware upload application for Windows [Appload](https://www.opticon.com/support/Appload/Appload%20Setup.exe)
+- Opticon USB Drivers can download from here: [USB Drivers Installer](https://www.opticon.com/support/Drivers/USB%20Drivers%20Installer.exe)
 
 The SEGGER Embedded studio can be licensed for free when using devices with a Nordic CPU like the OPN-6000 / OPN-2500
-For more inf see: https://wiki.segger.com/Get_a_License_for_Nordic_Semiconductor_Devices
+For more info see: [Get License for Nordic Semiconductor Devices](https://wiki.segger.com/Get_a_License_for_Nordic_Semiconductor_Devices)
 It can be useful to attach a nRF52 DK board to you PC, see the license is automatically recognized, although not it's not necessary to build applications
 
 # Getting started
@@ -39,7 +38,8 @@ This SDK contains the following components:
 - `lib.h` -> OS library include file
 - `lib_legacy.h` -> Legacy OS library with legacy lower-case function names, file system, and defines (for porting existing applications)
 - `Debug.h` -> Used for debugging
-- `/FileSystem` -> Header files for the FatFs Generic file system ([http://elm-chan.org/fsw/ff/FileSystem](http://elm-chan.org/fsw/ff/FileSystem)) (other OS related header files)
+- `/FileSystem` -> Header files for the [ChaN's FatFs Generic file system](http://elm-chan.org/fsw/ff/FileSystem) 
+- `(other OS related header files)`
 
 ## /mdk
 
@@ -96,7 +96,7 @@ In the folder `Projects/Examples`, you'll find small example applications for al
 
 # Loading of Firmware
 
-- See `documentation/How to load Firmware.pdf` for more information on how to load the resulting .bin files on to the OPN-2500 / OPN-6000
+- See `/documentation/How to load Firmware.pdf` for more information on how to load the resulting .bin files on to the OPN-2500 / OPN-6000
 
 # Trouble Shooting
 
