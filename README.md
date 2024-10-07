@@ -13,62 +13,69 @@ The SEGGER Embedded studio can be licensed for free when using devices with a No
 For more inf see: https://wiki.segger.com/Get_a_License_for_Nordic_Semiconductor_Devices
 It can be useful to attach a nRF52 DK board to you PC, see the license is automatically recognized, although not it's not necessary to build applications
 
-**** Getting started *****
+# Getting started
 
 - Download and extract this complete repository into a working folder
-
 - Download and install the latest Opticon USB drivers
-
 - Download and install the latest Appload version 
-
 - Install the SEGGER Embedded Studio for ARM
 
-**** SDK Files *******
-This SDK contains the following components
+# SDK Files
 
-/firmware
-    /bootloader
-            FAMVxxx.HEX     -> Bootloader of the OPN6000
-            FANVxxxx.HEX    -> Bootloader of the OPN2500
-    
-    /library
-            OPN2500_FBNVxxxx.a  -> OPN2500 Operating System library file
-            OPN6000_FBMVxxxx.a  -> OPN6000 Operating System library file
+This SDK contains the following components:
 
-/include
-            lib.h               -> OS library include file
-            lib_legacy.h        -> Legacy OS library with legacy lower-case function names, file system and defines (for porting existing application)
-            Debug.h             -> Used for debugging
-            /FileSystem         -> Header files for the FatFs Generic file system (http://elm-chan.org/fsw/ff/FileSystem)
-            (other OS related header files)
-/mdk
-            OPN2500 / OPN6000 / nRF528xx header specific header files
-/nrfutil
-            nrfutil.exe Nordic tool for signing and packing bootloader, softdevice, OS and application
+## /firmware
 
-/softdevice
-            /MBR        -> Master boot record (starts the bootloader)
-            /S113       -> Compiled softdevice S113 (Bluetooth BLE wireless protocol stack for nRF52840 Nordic CPU)
-            /Common     -> Softdevice header files
-            
-/toolchain
-            /CMSIS      -> provides software components for retargeting I/O operations in standard C run-time libraries
+- **/bootloader**
+  - `FAMVxxxx.HEX` -> Bootloader of the OPN6000
+  - `FANVxxxx.HEX` -> Bootloader of the OPN2500
 
-/documentation      
-            OPN-6000 User Manual.pdf    (latest version is always available at https://www.opticon.com/support/OPN-6000/OPN-6000%20User%20Manual.pdf)
-            OPN-2500 User Manual.pdf    (latest version is always available at https://www.opticon.com/support/OPN-2500/OPN-2500%20User%20Manual.pdf)
+- **/library**
+  - `OPN2500_FBNVxxxx.a` -> OPN2500 Operating System library file
+  - `OPN6000_FBMVxxxx.a` -> OPN6000 Operating System library file
 
-***** Applications ******
+## /include
+
+- `lib.h` -> OS library include file
+- `lib_legacy.h` -> Legacy OS library with legacy lower-case function names, file system, and defines (for porting existing applications)
+- `Debug.h` -> Used for debugging
+- **/FileSystem** -> Header files for the FatFs Generic file system ([http://elm-chan.org/fsw/ff/FileSystem](http://elm-chan.org/fsw/ff/FileSystem)) (other OS related header files)
+
+## /mdk
+
+- `OPN2500` / `OPN6000` / `nRF528xx` specific header files
+
+## /nrfutil
+
+- `nrfutil.exe` -> Nordic tool for signing and packing bootloader, softdevice, OS, and application
+
+## /softdevice
+
+- **/MBR** -> Master boot record (starts the bootloader)
+- **/S113** -> Compiled softdevice S113 (Bluetooth BLE wireless protocol stack for nRF52840 Nordic CPU)
+- **/Common** -> Softdevice header files
+
+## /toolchain
+
+- **/CMSIS** -> Provides software components for retargeting I/O operations in standard C run-time libraries
+
+## /documentation
+
+- `OPN-6000 User Manual.pdf` -> Latest version is always available at [OPN-6000 User Manual](https://www.opticon.com/support/OPN-6000/OPN-6000%20User%20Manual.pdf)
+- `OPN-2500 User Manual.pdf` -> Latest version is always available at [OPN-2500 User Manual](https://www.opticon.com/support/OPN-2500/OPN-2500%20User%20Manual.pdf)
+
+
+# Applications
 
 In the folder Projects/Applications, 2 applications can be found that are installed on the OPN2500/OPN6000 by default. They provide a good starting point when only small customizations are required:
 
-BatchApplication
+## BatchApplication
     -> Batch application to demonstrate using the OPN as batch device and communication using USB-MSD and OseComm
 
-BluetoothAppl
+## BluetoothAppl
     -> Bluetooth application to demonstrate Bluetooth BLE Serial, HID and OptiConnect as well as USB-HID, USB-CDC and USB-VCP and memorizing
 
-Snippets
+## Snippets
     -> Source files used by both applications for storing, updating and exporting bar code data in the file system
 
 - Open the projects file: BatchApplication\Projects\ses\Batch_Appl.emProject or BluetoothAppl\Projects\ses\Bluetooth_Appl.emProject
@@ -77,7 +84,7 @@ Snippets
 
 - The User Manuals of the OPN-2500 and OPN-6000 in the SDK provide more information on how to use these applications
 
-****** EXAMPLES ******
+# Examples
 
 In the folder Projects/Examples, you'll find small example applications for all basic peripheral functions of the OPN-2500 / OPN-6000 
     
@@ -87,11 +94,11 @@ In the folder Projects/Examples, you'll find small example applications for all 
 
 - After building, the resulting .bin file can be found in the /Output folder and loaded using Appload
 
-****** Loading of Firmware ******
+# Loading of Firmware
 
 - See 'documentation/How to load Firmware.pdf' for more information on how to load the resulting .bin files on to the OPN-2500 / OPN-6000
 
-****** Trouble Shooting ******
+# Trouble Shooting
 
 By default, the OPN will have the USB-VCP COM-port enabled, which makes it possible to load firmware using Appload over USB. 
 In application where this COM-port is not enabled (i.e. USB-MSD) or when the application has crashed, use this method to enter firmware update mode:
@@ -103,7 +110,7 @@ In application where this COM-port is not enabled (i.e. USB-MSD) or when the app
 You should now be able to load new firmware using Appload or OptiConnect. 
 To exit firmware update mode, press both keys for 3 seconds (or wait 30 seconds).
 
-****** OptiConnect ******
+# OptiConnect
 
 OptiConnect is a free application developed by Opticon to configure and manage the OPN series of barcode scanners and your bar code data. 
 
@@ -118,7 +125,7 @@ To connect your OPN to the OptiConnect app:
 A Flutter SDK is available for mobile app developers to use the OptiConnect functionality in your own application:
 https://github.com/OpticonOSEDevelopment/opticonnect_sdk_flutter
 
-****** OptiConfigure ******
+# OptiConfigure
 
 Opticon barcode readers can be customized using configuration barcodes. All available configurations for each device can be found here: 
 
@@ -131,12 +138,12 @@ The SystemSetting()-function in the SDK makes it possible to use these configura
 
 Note that 3-letter menu codes should be prefixed with the character '['. Likewise, 4-letter menu codes should be prefixed with the character ']'. 
 
-Example: 
+### Example: 
 <code>SystemSetting("[BCM");  // BCM: Enable all 1D codes excl. add-on</code>
 
-****** Porting existing OPN-2006 / PX-20 / RS-3000 applications ******
+# Porting existing OPN-2006 / PX-20 / RS-3000 applications
 
-New features in OPN-6000 / OPN-2500
+## New features in OPN-6000 / OPN-2500
 •   BLE OptiConnect service (BLE and USB)
 •   Bluetooth Device Firmware Update (DFU) (via OptiConnect)
 •   Bluetooth BLE HID supported (replaces Bluetooth Classic HID)
@@ -148,13 +155,13 @@ New features in OPN-6000 / OPN-2500
     o   BQZ: Switch to USB-CDC (OPN2001 mode)
     o   U2: OPN-2001 default
 
-Removed / missing features from OPN6000
+## Removed / missing features from OPN6000
 •   Bluetooth Classic (HID/SPP) is not supported
 •   Scanning of Bluetooth address labels to connect is removed (BLE is always slave)
 •   Setting of Pin code not supported
 •   NetO protocol is no longer supported (OseComm is recommended as alternative)
 
-Changed default behaviour (Bluetooth application)
+## Changed default behaviour (Bluetooth application)
 •   Bluetooth BLE HID is set as factory default
 •   Device immediately becomes discoverable when pressing the trigger key
 •   Memorizing enabled (when not connected) is enabled by default
@@ -167,13 +174,13 @@ Changed default behaviour (Bluetooth application)
 •   Function key can be used to remove barcodes when connected to OptiConnect (and when memorizing)
 •   Default Bluetooth local name is OPN6000_(serial) instead of OPN6000_(MAC Address), because mobile platforms often hide the Bluetooth address nowadays for privacy reasons
 
-File system / database functions
+## File system / database functions
 •   Since the Bluetooth, Batch and OPN2001 application are merged into a single default application, each application now stores its barcode data in the same formatting, which makes it possible to switch between applications without loosing your data.
 •   Because barcode data is stored in a fixed file format (SCANNED.DAT / SCANNED.IDX). The batch application generates the CSV-file with the configured formatting as soon as the USB-cable is connected instead of while scanning
 •   USB-MSD file system is now 'read/write' instead of 'read/only' because issues that could case the filesystem to be corrupted by Windows on the OPN-2006/PX-20 have been resolved
 •   The OPN-6000/OPN-2500 makes use of ChaN's FatFS fileystem, which uses file system functions like f_open and f_close ("ff.h" and "FileSystem.h"). For backwards compatiblity the "stdio.h" functions like 'fopen' and 'fclose' are supported using a wrapper. Low-level I/O functions open/close/read/write are no longer supported.
 
-Source code
+## Source code
 - In case your application is derived from the OPN-2006 batch application it is recommended to add your customizations to the new Batch application instead of porting the OPN-2006 based application, because it's been optimized for and tested with the new scanners
 - In case your application is derived from the OPN-2006 Bluetooth demo, it is recommended to add your customizations to the new Bluetooth application instead of porting the OPN-2006 based application, because it's been optimized for and tested with the new scanners
 
