@@ -1,0 +1,47 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints"/>
+ <ExecutionProfileWindow/>
+ <FrameBuffer/>
+ <Memory1/>
+ <Memory2/>
+ <Memory3/>
+ <Memory4/>
+ <Project>
+  <ProjectSessionItem path="OPN_HelloWorld_Appl"/>
+  <ProjectSessionItem path="OPN_HelloWorld_Appl;OPN_HelloWorld_Appl"/>
+  <ProjectSessionItem path="OPN_HelloWorld_Appl;OPN_HelloWorld_Appl;SDK"/>
+  <ProjectSessionItem path="OPN_HelloWorld_Appl;OPN_HelloWorld_Appl;SDK;Include"/>
+  <ProjectSessionItem path="OPN_HelloWorld_Appl;OPN_HelloWorld_Appl;Sources"/>
+ </Project>
+ <Register1/>
+ <Register2/>
+ <Register3/>
+ <Register4/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Never"/>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="7" y="56" useTextEdit="1" path="Sources/main.c" left="0" top="27" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="76" useTextEdit="1" path="HelloWorld.emProject" left="0" top="49" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1160" useTextEdit="1" path="../../../SDK/include/lib.h" left="0" selected="1" top="1135" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="83" useTextEdit="1" path="../../../SDK/include/lib_legacy.h" left="0" top="58" codecName="Default"/>
+ </Files>
+ <EMStudioWindow activeProject="OPN_HelloWorld_Appl" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug OPN2500" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/OPN_NORDIC/git/opn2500_opn6000_sdk/projects/applications/HelloWorld/Sources" debugSearchPath="" autoConnectCapabilities="3199"/>
+</session>
