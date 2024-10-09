@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="../global.css">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PoweredDown</TITLE>
+</HEAD>
+
+<BODY>
+<H1>PoweredDown</H1>
+
+<TABLE width=100% class=setup>
+	<TR class=setup>
+		<TD class=item>Availability</TD>
+		<TD class=itemdescr>All terminals</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Description</TD>
+		<TD class=itemdescr>
+			This function is used to find out if the handheld terminal has been powered down. This can be useful if the application must
+			start in a certain state after switching on the handheld terminal.<BR>The operating system keeps track if the handheld terminal was switched on by
+			maintaining a flag. A call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A> returns the state of the flag, and it will clear the flag.
+		</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Syntax</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PoweredDown.html">PoweredDown</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Arguments</TD>
+		<TD class=itemdescr>None</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Returns</TD>
+		<TD class=itemdescr>
+			<TABLE class=OPTIONS width=100% >
+				<TR>
+					<TD>0</TD>
+					<TD>The handheld terminal has not been powered down since the last call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A>.</TD>
+				</TR>
+				<TR>
+					<TD>1</TD>
+					<TD>The handheld terminal has been powered down since the last call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A>.</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Remarks</TD>
+		<TD class=itemdescr>A call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A> will clear the PoweredDown flag in the operating system.</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Example</TD>
+		<TD class=itemdescr>
+	<PRE>
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
+
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <A class=clib HREF="./PoweredDown.html">AutoPowerDown</A>( ON, 10 * 50 );    <SPAN class=c-comment>// switch off after 10 sec</SPAN>
+    printf("\nTesting\npowereddown..");
+
+    <SPAN class=c-keyword>for</SPAN>(;;)
+    {
+        <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./PoweredDown.html">PoweredDown</A>())
+        {
+            printf("\nTerminal was\nswitched off!");
+            <A class=clib HREF="./Delay.html">Delay</A>( 2 * 50 );
+            printf("\nRunning again");
+        }
+
+        <A class="clib" href="./Idle.html">Idle</A>();
+    }
+}
+</PRE>
+		</TD>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

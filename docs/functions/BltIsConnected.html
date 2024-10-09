@@ -1,0 +1,112 @@
+<link rel="stylesheet" type="text/css" href="../global.css">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>BltIsConnected</TITLE>
+</HEAD>
+
+<BODY>
+<H1>BltIsConnected</H1>
+
+<TABLE width=100% class=setup>
+	<TR class=setup>
+		<TD class=item>Availability</TD>
+		<TD class=itemdescr>All terminals</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Description</TD>
+		<TD class=itemdescr>For Bluetooth®-enabled models, returns the current state of the Bluetooth® connection.</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Syntax</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./BltIsConnected.html">BltIsConnected</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Arguments</TD>
+		<TD class=itemdescr>None</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Returns</TD>
+		<TD class=itemdescr>
+			<TABLE class=OPTIONS width=100%>
+				<TR>
+					<TD>NG</TD>
+					<TD>Connection cannot be determined yet.</TD>
+				</TR>
+				<TR>
+					<TD>TRUE</TD>
+					<TD>Connected.</TD>
+				</TR>
+				<TR>
+					<TD>FALSE</TD>
+					<TD>Not connected.</TD>
+				</TR>
+				<TR>
+					<TD>ERROR</TD>
+					<TD>Bluetooth® stack has encountered an error. (Use <A class=clib HREF="./ComOpen.html">ComOpen</A> to reconnect.)</TD>
+				</TR>
+
+			</TABLE>
+		</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Remarks</TD>
+		<TD class=itemdescr>When connecting there is a small amount of time that the connection state cannot be determined; in this case the function can return NG. </TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Example</TD>
+		<TD class=itemdescr>
+	<PRE>
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
+
+<SPAN class=c-keyword>void</SPAN> check_connection( <SPAN class=c-keyword>void</SPAN> )
+{
+    <SPAN class=c-keyword>switch</SPAN>( <A class=clib HREF="./BltIsConnected.html">BltIsConnected</A>())
+    {
+        <SPAN class=c-keyword>case</SPAN> NG:
+            printf("\nNot available yet.");
+            <SPAN class=c-keyword>break</SPAN>;
+        <SPAN class=c-keyword>case</SPAN> ERROR:
+            printf("\nConnection error.");
+            <SPAN class=c-keyword>break</SPAN>;
+        <SPAN class=c-keyword>case</SPAN> TRUE:
+            printf("\nConnected.");
+            <SPAN class=c-keyword>break</SPAN>;
+        <SPAN class=c-keyword>case</SPAN> FALSE:
+            printf("\nNot connected.");
+            <SPAN class=c-keyword>break</SPAN>;
+    }
+}
+
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <A class=clib HREF="./AutoPowerDown.html">AutoPowerDown</A>( ON, 3000 ); <SPAN class=c-comment>// 60 seconds</SPAN>
+    <A class=clib HREF="./SystemSetting.html">SystemSetting</A>("7G");       <SPAN class=c-comment>// show charging indication LED</SPAN>
+
+    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM3 );           <SPAN class=c-comment>// SPP connection port</SPAN>
+    <SPAN class=c-keyword>for</SPAN>(;;)
+    {
+        check_connection();
+        <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./kbhit.html">kbhit</A>() )
+        {
+            <A class=clib HREF="./ResetKey.html">ResetKey</A>();
+            <A class=clib HREF="./ComClose.html">ComClose</A>( COM3 );
+            check_connection();
+            <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM3 );
+        }
+        <A class=clib HREF="./Delay.html">Delay</A>(5);
+    }
+}
+</PRE></TD>
+</TR>
+
+</TABLE>
+</BODY>
+</HTML>

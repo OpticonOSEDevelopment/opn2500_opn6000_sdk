@@ -1,0 +1,106 @@
+<link rel="stylesheet" type="text/css" href="../global.css">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>GetBootVersion</TITLE>
+</HEAD>
+
+<BODY>
+<H1>GetBootVersion</H1>
+
+<TABLE width=100% class=setup>
+	<TR class=setup>
+		<TD class=item>Availability</TD>
+		<TD class=itemdescr>All terminals</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Description</TD>
+		<TD class=itemdescr>
+			This function returns the version of the Bootloader of the handheld terminal.
+			The version is returned in an 8 character long string, and is terminated by the null character
+			'\0'. The first and third character of the version defines the terminal type, the second character
+			defines the software type (in this case A)
+
+			<TABLE class=OPTIONS width=100% >
+				<THEAD>
+					<TR>
+						<TH>Code</TH>
+						<TH>Terminal</TH>
+					</TR>
+				</THEAD>
+				<TBODY>
+					<TR>
+						<TD>FAN</TD>
+						<TD>OPN2500</TD>
+					</TR>
+					<TR>
+						<TD>FAM</TD>
+						<TD>OPN6000</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+			<BR>
+			Examples of version strings are:<BR>
+
+			FANV0030 = OPN2500 Bootloader. version 0.30<BR>
+			FAMV0030 = OPN6000 Bootloader. version 0.30
+		</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Syntax</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>char</SPAN> <A class=clib HREF="./GetBootVersion.html">*GetBootVersion</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+	</TR>
+
+
+	<TR class=setup>
+		<TD class=item>Arguments</TD>
+		<TD class=itemdescr>None</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Returns</TD>
+		<TD class=itemdescr>A pointer to a zero terminated string with the version number.</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Remarks</TD>
+		<TD class=itemdescr>None</TD>
+	</TR>
+
+	<TR class=setup>
+		<TD class=item>Example</TD>
+		<TD class=itemdescr>
+<PRE>
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
+
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <SPAN class=c-keyword>int</SPAN> key;
+
+    <A class=clib HREF="./ResetKey.html">ResetKey</A>();
+    printf("\nPress trigger key");
+    <SPAN class=c-keyword>for</SPAN>(;;)
+    {
+        <SPAN class=c-keyword>if</SPAN>( (key = getchar()) != EOF)
+        {
+            <A class=clib HREF="./ResetKey.html">ResetKey</A>();
+            <SPAN class=c-keyword>switch</SPAN>( key )
+            {
+                <SPAN class=c-keyword>case</SPAN> TRIGGER_KEY:
+                    <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SHIGH, 0);
+                    printf("\Bootloader = %s", <A class=clib HREF="./GetBootVersion.html">GetBootVersion</A>());
+                    printf("\nO/S = %s", <A class=clib HREF="./GetOsVersion.html">GetOsVersion</A>());
+                    <SPAN class=c-keyword>break</SPAN>;
+                <SPAN class=c-keyword>default</SPAN>:
+                    <A class=clib HREF="./Sound.html">Sound</A>( TCLICK, VHIGH, SLOW, 0);
+                    <SPAN class=c-keyword>break</SPAN>;
+            }
+        }
+        <A class=clib HREF="./Idle.html">Idle</A>();
+    }
+}
+</PRE>
+		</TD>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

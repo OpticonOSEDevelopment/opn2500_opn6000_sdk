@@ -1,0 +1,159 @@
+<link rel="stylesheet" type="text/css" href="../global.css">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Fonts and displaying text</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Fonts and displaying text</H1>
+
+<H3>1. Fonts on the terminals that have a display</H3></A>
+
+<P>
+The terminals with a display have build-in standard character fonts with different sizes.
+Depending on the terminal, the following fonts are available: huge, large, medium, small and tiny.
+<TABLE class=OPTIONS width=100%>
+	<THEAD>
+		<TR>
+			<TH></TH>
+			<TH>Huge font</TH>
+			<TH>Large font</TH>
+			<TH>Medium font</TH>
+			<TH>Small font</TH>
+			<TH>Tiny font</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR>
+			<TD><B>OPH100x, OPH300x, H13</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+		</TR>
+		<TR>
+			<TD><B>OPL97xx, DCL153x, OPL981x, PX35 & PX36</TD>
+			<TD></TD>
+			<TD>X</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+			<TD>X</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+
+
+You can find out the exact size of a character (measured in pixels) by using the
+function <A class=clib HREF="../functions/getfontsize.html">getfontsize()</A>.<BR>
+See the <A class=clib HREF="../functions/setfont.html">setfont()</A> function for details of built-in standard fonts. These will fulfill
+requirements of many users. Also see the <A class=clib HREF="../functions/setecho.html">setecho()</A> function that controls echoing
+typed characters on the display.<BR>
+<BR>
+The <A HREF="../Appendices/charmaps.html">character map</A> is shown <A HREF="../Appendices/charmaps.html">here</A>.<BR>
+
+<BR>
+User defined fonts can also be used by the handheld terminal. The user font can be loaded
+into the handheld terminal at run time in a file or it can be linked to the executable
+during design time. In both cases the user font is specified in the form of a table with
+the following elements:<BR>
+
+<PRE>
+    <SPAN class=c-keyword>unsigned char</SPAN> height;         <SPAN class=c-comment>// height of a character measured in pixels</SPAN>
+    <SPAN class=c-keyword>unsigned char</SPAN> width;          <SPAN class=c-comment>// width of a character measured in pixels</SPAN>
+    <SPAN class=c-keyword>unsigned char</SPAN> byte_1;         <SPAN class=c-comment>// first eight pixels</SPAN>
+    <SPAN class=c-keyword>unsigned char</SPAN> byte_2;         <SPAN class=c-comment>// second eight pixels ...</SPAN>
+    <SPAN class=c-comment>// (and so on)</SPAN>
+</PRE>
+
+See the description of the <A class=clib HREF="../functions/setfont.html">setfont()</A> function for full details on how to design your own font.
+By calling <A class=clib HREF="../functions/setfont.html">setfont()</A> the user specifies if the handheld terminal must use the standard large
+or small font, a user font in a file, or a user font in a table. The file or table is specified
+by name, so it is possible to load more than one user font into the handheld terminal and to
+switch between fonts at run time. The maximum character bitmap size is limited to 16*16 bits.<BR>
+<BR>
+There are some practical limitations on how many characters can be defined in a font table.
+The standard C functions that process text to be printed on the screen assume that the text
+to be printed is specified byte for byte. The string supplied to the function is processed
+byte for byte. The value of a byte in the string serves as an index into the font table.
+This would mean that 256 characters can be defined in the font table and be printed with
+these functions. The font is a so-called one-byte font.<BR>
+The <A class=clib HREF="../functions/printsymbol.html">printsymbol()</A> function prints one character on the screen and has an integer as argument,
+hence it can address 65536 characters in the table. For each character to be printed a call
+must be made to <A class=clib HREF="../functions/printsymbol.html">printsymbol()</A>.<BR>
+A special character was introduced to be able to print two-byte fonts. When functions as printf(),
+putc() encounter the character 0xFF in the text, the next two bytes will be combined into one
+integer and used as an index in the font table. For example the call printf("\xFF%c%c",0xA6,0xD2);
+will print the character whose hexadecimal index value is A6D2.<BR>
+Examples of two byte fonts are Kanji (Japan), Jian Ti (simplified Chinese) and Fan Ti (traditional Chinese).<BR>
+Another way to print two-byte fonts with the 0xFF character is illustrated below. In this example
+a literal string of Chinese characters is printed on the screen. It is assumed that Chinese
+characters on the PC are represented as two-byte codes in the source code of the program.
+</P>
+
+<TABLE width=100% class=setup>
+<TR class=setup>
+	<TD class=item>Example</TD>
+	<TD class=itemdescr>
+	<PRE>
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdlib.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
+
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <SPAN class=c-keyword>char</SPAN> str[100];
+
+    <SPAN class=c-keyword>for</SPAN>(;;)
+    {
+        ConvertString(str,"Chinese characters literal text");
+        printf("%s", str);
+
+        <SPAN class=c-keyword>while</SPAN>( getchar() == EOF )
+            <A class=clib HREF="../functions/Idle.html">Idle</A>();
+    }
+}
+
+<SPAN class=c-keyword>void</SPAN> ConvertString(<SPAN class=c-keyword>char</SPAN> *out, <SPAN class=c-keyword>char</SPAN> *in)
+{
+    <SPAN class=c-keyword>int</SPAN> x;
+    <SPAN class=c-keyword>unsigned int</SPAN> hi_byte, low_byte, c;
+
+    for(x=0;;x+=2)
+    {
+        if (in[x]=='\0')
+            break;
+
+        hi_byte = in[x]&0xFF;
+        lo_byte = in[x+1]&0xFF;
+        c=someformula(hi_byte,lo_byte);
+        *(out++)='\xFF';
+        *(out++)=(c>>8)&0xFF;
+        *(out++)=c&0xFF;
+    }
+
+    *out='\0';
+}
+</PRE></TD>
+</TR>
+</TABLE>
+
+<P>
+In this example we assume that when the compiler scans the source file it will replace
+each Chinese character by two bytes in the const section of the executable. At run-time,
+when the literal text is converted for screen printing by ConvertString() the handheld
+terminal will scan the text byte for byte.<BR>
+In the example the function someformula() returns the integer index in the font table
+for the Chinese character. This integer is placed in the string str as two bytes preceded
+by the 0xFF character. str is passed to printf() to be printed on the screen.<BR>
+<BR>
+Refer to <A HREF="../Appendices/specialchars.html">Special characters</A> for a list of
+escape sequences that can be used in functions like <B>printf()</B> or <B>putc()</B> to denote
+special characters. Examples are '\n' for carriage return and '\xFF' to combine two bytes
+into one integer index in a font file.
+</P>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="../global.css">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Reading barcodes</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Reading barcodes</H1>
+
+<P>
+The handheld terminals can read all major barcode types and some special ones. By default all major barcode types can be read.<BR>
+A large number of parameters are available to influence the way barcodes are being read.
+They are listed in the section: <A HREF="../Systemsetting/Systemsettings.html">Systemsettings</A>,
+and can be set with the <A class=clib HREF="../functions/SystemSetting.html">SystemSetting()</A>
+function. Options exist for setting which barcode types must be read, if a check digit
+must be calculated on the barcode or not, and extra formatting of the barcode.
+Setting only the barcode types used in your application is good practice, since it
+reduces the probability of false reads.
+</P>
+
+<H3>1. Barcode scanner specifics.</H3>
+
+<P>
+For the laser terminals and 2D CMOS scanners, other options exist that influence the performance of the scanner. They are also listed in the <A HREF="../Systemsetting/Systemsettings.html">Systemsettings</A>-section
+of this help file and can again be set by using the <A class=clib HREF="../functions/SystemSetting.html">SystemSetting()</A> function.
+The redundancy setting specifies how many times a barcodes must be decoded in a row,
+before it is accepted as a valid read. By default it is set to two. Setting this value
+lower will make the scanner more aggressive, but false reads may become somewhat more likely.<BR>
+The scan-engine is the part of the handheld terminal that emits the laser beam, detects
+variations in reflected laser light and stores this information in a buffer for further
+processing by the <A class=clib HREF="../functions/ReadBarcode.html">ReadBarcode()</A> function.
+The scan-engine can be controlled from the application by the
+<A class=clib HREF="../functions/ScannerPower.html">ScannerPower()</A> function.<BR>
+After the handheld terminal reads a barcode the scan-engine will be switched off or continue
+reading ("multiple read"), depending on which parameters were passed to
+<A class=clib HREF="../functions/ScannerPower.html">ScannerPower()</A>.
+The scan-engine must be seen as an independent process running concurrently with the
+application and regulated by <A class=clib HREF="../functions/ScannerPower.html">ScannerPower()</A>.<BR>
+The function <A class=clib HREF="../functions/ReadBarcode.html">ReadBarcode()</A> tries to find a barcode in the scan-engine data.
+If <A class=clib HREF="../functions/ReadBarcode.html">ReadBarcode()</A> finds a valid barcode, it returns the barcode, else it returns an error code.<BR>
+It is important to understand that <A class=clib HREF="../functions/ReadBarcode.html">ReadBarcode()</A> must be called repeatedly, in a loop,
+to yield a barcode. Each time <A class=clib HREF="../functions/ReadBarcode.html">ReadBarcode()</A> is called, it processes the scan-engine data
+generated so far and then returns. In this respect it is much like getchar() on an stream,
+that neither waits for a keystroke, but returns immediately.
+</P>
+
+</BODY>
+</HTML>
