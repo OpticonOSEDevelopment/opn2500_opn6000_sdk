@@ -12,7 +12,7 @@ rename EndTimer.html EndTimer.html
 rename GetCom.html GetCom.html
 rename getcom2.html GetCom2.html
 rename GetCTS.html GetCTS.html
-rename getdate.html GetDate.html
+rename GetDate.html GetDate.html
 rename getdatetime.html GetDateTime.html
 rename GetDSR.html GetDSR.html
 rename GetOsVersion.html GetOSVersion.html

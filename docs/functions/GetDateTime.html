@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>getdatetime</TITLE>
+<TITLE>GetDateTime</TITLE>
 </HEAD>
 
 <BODY>
-<H1>getdatetime</H1>
+<H1>GetDateTime</H1>
 
 <TABLE width=100% class=setup>
 	<TR class=setup>
@@ -19,7 +19,7 @@
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>short</SPAN> <A class=clib HREF="./getdatetime.html">getdatetime</A>( <SPAN class=c-keyword>struct</SPAN> date *datep, <SPAN class=c-keyword>struct</SPAN> time *timep );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>short</SPAN> <A class=clib HREF="./GetDateTime.html">GetDateTime</A>( <SPAN class=c-keyword>struct</SPAN> date *datep, <SPAN class=c-keyword>struct</SPAN> time *timep );</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
@@ -63,13 +63,13 @@
 	</TR>
 	<TR class=setup>
 		<TD class=item>Remarks</TD>
-		<TD class=itemdescr>This function can be used to retrieve the date and time in a single function call, without calling both <A class=clib HREF="./getdate.html">getdate</A>() and <A class=clib HREF="./GetTime.html">GetTime</A>().</TD>
+		<TD class=itemdescr>This function can be used to retrieve the date and time in a single function call, without calling both <A class=clib HREF="./GetDate.html">GetDate</A>() and <A class=clib HREF="./GetTime.html">GetTime</A>().</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Example</TD>
 		<TD class=itemdescr>
 <PRE>
-<SPAN class=c-comment>// SetDateTime() / getdatetime() example
+<SPAN class=c-comment>// SetDateTime() / GetDateTime() example
 </SPAN>
 <SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
 <SPAN class=c-preprocessor>#include</SPAN> &#60ctype.h&#62
@@ -84,7 +84,7 @@
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <A class=clib HREF="./getdate.html">getdatetime</A>( &#38d, &#38t );
+        <A class=clib HREF="./GetDate.html">GetDateTime</A>( &#38d, &#38t );
         printf("\n%02d:%02d:%02d", t.ti_hour, t.ti_min, t.ti_sec);
         printf(" %02d/%02d/%04d", d.da_day, d.da_mon, d.da_year);
         <A class=clib HREF="./Delay.html">Delay</A>( 50 );

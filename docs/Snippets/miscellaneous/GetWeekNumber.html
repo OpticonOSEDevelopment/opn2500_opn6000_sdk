@@ -54,7 +54,7 @@
     <SPAN class=c-keyword>unsigned long</SPAN> ulJDN;
     <SPAN class=c-keyword>struct</SPAN> date d = {0};
 
-    <A class=clib HREF="../../functions/getdate.html">getdate</A>( &d );
+    <A class=clib HREF="../../functions/GetDate.html">GetDate</A>( &d );
 
     a = (14UL - d.da_mon ) / 12UL;
     y = d.da_year + 4800UL - a;
@@ -76,7 +76,7 @@
     putchar('\f');
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <A class=clib HREF="../../functions/getdate.html">getdate</A>( &d );
+        <A class=clib HREF="../../functions/GetDate.html">GetDate</A>( &d );
         <A class=clib HREF="../../functions/gotoxy.html">gotoxy</A>( 0, 0);
         printf("%02d-%02d-%04d  \nWeek number %d", d.da_day, d.da_mon, d.da_year, GetWeekNumber() );
 

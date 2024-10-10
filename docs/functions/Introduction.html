@@ -34,7 +34,7 @@ on how they conform or deviate from the ANSI standard.
 
 <TABLE CLASS="para" ID="number0" width=100%>
 	<TR>
-		<TH>ERRNO.H</TH>
+		<TH>errno.h</TH>
 		<TD>
 			The ERRNO.H include file defines several macros that all relate to the
 			reporting of error conditions mainly related to file handling routines.
@@ -42,7 +42,7 @@ on how they conform or deviate from the ANSI standard.
 		</TD>
 	</TR>
 	<TR>
-	<TH>FLOAT.H, LIMITS.H</TH>
+	<TH>float.h, limits.h</TH>
 		<TD>
 			These files define macros that expand to various limits and parameters for
 			floating point (FLOAT.H) and integral types (LIMITS.H). They are included
@@ -50,31 +50,31 @@ on how they conform or deviate from the ANSI standard.
 		</TD>
 	</TR>
 	<TR>
-	<TH>MATH.H</TH>
+	<TH>math.h</TH>
 		<TD>
 			Math.h contains the definitions of the commonly used mathematics functions.
 			It is included and conforms to the ANSI specifications.<BR>
 		</TD>
 	</TR>
 	<TR>
-	<TH>STDARG.H</TH>
+	<TH>stdarg.h</TH>
 		<TD>
 			This file defines macros and data types for processing a variable number of
 			arguments on a function call. It is included and conforms to the ANSI specifications.
 		</TD>
 	</TR>
 	<TR>
-		<TH>STDDEF.H</TH>
+		<TH>stddef.h</TH>
 		<TD>This include file defines some types. It is included and conforms to the ANSI specifications.</TD>
 	</TR>
 	<TR>
-		<TH>STDIO.H</TH>
+		<TH>stdio.h</TH>
 		<TD>
 			The stdio.h file contains type declarations, macros and functions for several I/O related functions.
 		</TD>
 	</TR>
 	<TR>
-		<TH>STDLIB.H</TH>
+		<TH>stdlib.h</TH>
 		<TD>
 			This file declares functions for number conversion, storage allocation and
 			similar tasks. All ANSI functions prototyped in STDLIB.H are supported except
@@ -83,19 +83,19 @@ on how they conform or deviate from the ANSI standard.
 		</TD>
 	</TR>
 	<TR>
-		<TH>STRING.H</TH>
+		<TH>string.h</TH>
 		<TD>
 			Defines functions for string and memory manipulation. It is included and conforms
 			to the ANSI specifications.
 		</TD>
 	</TR>
 	<TR>
-		<TH>TIME.H </TH>
+		<TH>time.h </TH>
 		<TD>Additional to the ANSI time functions, the operating system has several easy to use functions for time and date handling:
 			<A class=clib HREF="./SetTime.html">SetTime</A>(),
 			<A class=clib HREF="./SetDate.html">SetDate</A>(),
 			<A class=clib HREF="./GetTime.html">GetTime</A>(),
-			<A class=clib HREF="./getdate.html">getdate</A>().
+			<A class=clib HREF="./GetDate.html">GetDate</A>().
 		</TD>
 	</TR>
 </TABLE>
@@ -107,13 +107,13 @@ on how they conform or deviate from the ANSI standard.
 
 <TABLE class=OPTIONS width=100%>
 	<TR>
-		<TH width=10%>LIB.H</TH>
+		<TH width=10%>lib.h</TH>
 		<TD>
 			Contains all available Operating System C functions with CamelCase names and defines
 		</TD>
 	</TR>
 	<TR>
-	<TH>LIB_Legacy.H</TH>
+	<TH>lib_legacy.h</TH>
 		<TD>
 			This files is used for backwards compatibility, using lower case function names. 
 		</TD>
@@ -439,7 +439,7 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Checks if the time structure passed to the function holds a valid time</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./getdate.html">getdate</A></TD>
+						<TD><LI><A HREF="./GetDate.html">GetDate</A></TD>
 						<TD>Fills in the date structure with the current date stored in the terminal's real-time clock</TD>
 					</TR>
 					<TR>
@@ -447,7 +447,7 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Fills in the time structure with the current time as stored in the terminal's real-time clock</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./getdatetime.html">getdatetime</A></TD>
+						<TD><LI><A HREF="./GetDateTime.html">GetDateTime</A></TD>
 						<TD>Fills in a time structure and a date structure with the current time and date stored in the terminal's real-time clock</TD>
 					</TR>
 					<TR>

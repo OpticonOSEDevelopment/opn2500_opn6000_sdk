@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>getdate</TITLE>
+<TITLE>GetDate</TITLE>
 </HEAD>
 
 <BODY>
-<H1>getdate</H1>
+<H1>GetDate</H1>
 
 <TABLE width=100% class=setup>
 	<TR class=setup>
@@ -19,7 +19,7 @@
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./getdate.html">getdate</A>( <SPAN class=c-keyword>struct</SPAN> date *datep );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./GetDate.html">GetDate</A>( <SPAN class=c-keyword>struct</SPAN> date *datep );</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
@@ -48,7 +48,7 @@
 		<TD class=item>Example</TD>
 		<TD class=itemdescr>
 <PRE>
-<SPAN class=c-comment>// getdate() / GetTime() example
+<SPAN class=c-comment>// GetDate() / GetTime() example
 </SPAN>
 <SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
 <SPAN class=c-preprocessor>#include</SPAN> &#60ctype.h&#62
@@ -61,7 +61,7 @@
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <A class=clib HREF="./getdate.html">getdate</A>( &#38d );
+        <A class=clib HREF="./GetDate.html">GetDate</A>( &#38d );
         <A class=clib HREF="./GetTime.html">GetTime</A>( &#38t );
         printf("\n%02d:%02d:%02d", t.ti_hour, t.ti_min, t.ti_sec);
         printf(" %02d/%02d/%04d", d.da_day, d.da_mon, d.da_year);

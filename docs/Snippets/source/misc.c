@@ -24,7 +24,7 @@ int WhatDayOfWeek( void )
 	int m, y, a;
 	struct date curr_date = {0};
 
-	getdate( &curr_date );
+	GetDate( &curr_date );
 	a = (14 - curr_date.da_mon ) / 12;
 	y = curr_date.da_year - a;
 	m = curr_date.da_mon + (12*a) - 2;
@@ -42,7 +42,7 @@ short GetWeekNumber( void )
 	unsigned long ulJDN;
 	struct date d = {0};
 
-	getdate( &d );
+	GetDate( &d );
 
 	a = (14UL - d.da_mon ) / 12UL;
 	y = d.da_year + 4800UL - a;

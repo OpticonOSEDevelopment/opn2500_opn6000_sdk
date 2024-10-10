@@ -33,7 +33,7 @@
 #define ischarging                  IsCharging           // int ischarging(void);
 
 // Date & time functions
-#define getdate                     GetDate              // void getdate(struct date *dp);
+#define GetDate                     GetDate              // void GetDate(struct date *dp);
 #define gettime                     GetTime              // void gettime(struct time *tp);
 #define checktime                   CheckTime            // int checktime(struct time *timep);
 #define checkdate                   CheckDate            // int checkdate(struct date *datep);

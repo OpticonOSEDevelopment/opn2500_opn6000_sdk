@@ -12,17 +12,18 @@ P {
 	FONT-SIZE: 10pt; COLOR: black
 }
 H1 {
-	FONT-SIZE: 10pt; COLOR: #FFFFFF; BACKGROUND-COLOR: #003D66; FONT-FAMILY: 'Gotham Book', Arial;
+	FONT-SIZE: 18pt; COLOR: #FFFFFF; BACKGROUND-COLOR: #003D66; FONT-FAMILY: 'Gotham Book', Arial;
 	BORDER: #003D66 8px solid;
 }
 H2 {
-	FONT-SIZE: 10pt; COLOR: black
+	FONT-SIZE: 13pt; COLOR: black
 }
 H3 {
-	FONT-SIZE: 10pt; COLOR: black
+	FONT-SIZE: 11pt; COLOR: black
 }
 H4 {
-	FONT-SIZE: 10pt; COLOR: black
+	FONT-SIZE: 10pt; COLOR: black;
+	MARGIN-BOTTOM: 2px
 }
 H5 {
 	FONT-SIZE: 10pt; COLOR: black
@@ -76,28 +77,13 @@ TH {
 	FONT-WEIGHT: bold
 }
 H2 {
-	COLOR: #ff9900
+	COLOR: #003D66
 }
 H3 {
 	COLOR: #FFFFFF; BACKGROUND-COLOR: #003D66;
 }
-/*H5 {
-	COLOR: #ff9900
-}*/
-H1 {
-	FONT-SIZE: 18pt
-}
-H2 {
-	FONT-SIZE: 13pt
-}
-H3 {
-	FONT-SIZE: 11pt; FONT-FAMILY: Arial, sans-serif
-}
-H4 {
-	FONT-SIZE: 10pt; MARGIN-BOTTOM: 2px
-}
 H5 {
-	FONT-WEIGHT: normal;/*FONT-SIZE: 9pt;*/ MARGIN-BOTTOM: 2px
+	FONT-WEIGHT: normal; MARGIN-BOTTOM: 2px
 }
 H6 {
 	FONT-WEIGHT: normal; FONT-SIZE: 65%; COLOR: #626262
@@ -106,7 +92,7 @@ DD {
 	MARGIN-LEFT: 20px
 }
 PRE {
-	PADDING-RIGHT: 7pt; PADDING-LEFT: 7pt; PADDING-BOTTOM: 7pt; FONT: 9pt "Courier New", Courier, mono; WIDTH: 100%; PADDING-TOP: 7pt; WHITE-SPACE: pre; BACKGROUND-COLOR: #fbedbb;
+	PADDING-RIGHT: 7pt; PADDING-LEFT: 7pt; PADDING-BOTTOM: 7pt; FONT: 9pt "Courier New", Courier, mono; WIDTH: 100%; PADDING-TOP: 7pt; WHITE-SPACE: pre; BACKGROUND-COLOR: #ededed;
 
 }
 CODE {
@@ -419,10 +405,7 @@ TD.ITEMDESCR{
 	PADDING-BOTTOM: 10px; PADDING-TOP: 10px
 }
 
-//
-// table options for items descriptions
-//
-
+/* table options for items descriptions */
 TABLE.OPTIONS{ 
 	font-size: 100%; margin-top: 1em; margin-bottom: 1em 
 }
@@ -514,9 +497,7 @@ table.options tbody tr.default{
 	vertical-align: top; background: #eeeeee; font-weight: bolder;
 }
 
-//
-// C-Library functions highlighting
-//
+/* C-Library functions highlighting */
 A.clib{
 	CURSOR: hand; COLOR: #990000; TEXT-DECORATION: none
 }
@@ -528,9 +509,7 @@ A.clib:active {
 	TEXT-DECORATION: none; FONT-WEIGHT: bold;
 }
 
-//
-// Database functions highlighting
-//
+/* Database functions highlighting */
 .dbase{
 	COLOR: black; FONT-FAMILY: "Courier New", Courier, mono
 }
@@ -564,9 +543,7 @@ A.input:active {
 	TEXT-DECORATION: none; COLOR: black;
 }
 
-//
-// Menu functions highlighting
-//
+/* Menu functions highlighting */
 .menu{
 	COLOR: black; FONT-FAMILY: "Courier New", Courier, mono
 }
@@ -594,9 +571,7 @@ A.button:active {
 	TEXT-DECORATION: none; FONT-WEIGHT: bold;
 }
 
-//
-// String functions highlighting
-//
+/* String functions highlighting */
 .strfun{
 	COLOR: black; FONT-FAMILY: "Courier New", Courier, mono
 }
@@ -682,4 +657,19 @@ IMG.hide
 
 .active::after {
 	transform: rotate(90deg); /* Rotate arrow when active */
+}
+
+/* Style for the top bar */
+.top-bar {
+    background-color: #003D66; /* Blue color */
+    padding: px 5px;
+    display: flex;
+    align-items: center; /* Vertically centers the content */
+    justify-content: center; /* Horizontally centers the content */
+    width: 100%;
+    /*height: 60px;*/ /* Set a fixed height if needed */
+}
+
+.top-bar img {
+    height: 80%;  /* Set width for the logo */
 }
