@@ -32,14 +32,10 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <setjmp.h>
 #include "lib.h"
 #include "ff.h"
 #include "FileSystem.h"
 #include "index.h"
-#if defined(WIN32)
-	#include <io.h>
-#endif
 
 #ifdef DEBUG
 volatile int blocks_read = 0;

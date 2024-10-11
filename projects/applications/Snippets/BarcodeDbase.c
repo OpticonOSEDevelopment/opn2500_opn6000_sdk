@@ -1,13 +1,12 @@
 
 //
-// Database.c(pp)
+// BarcodeDbasee.c
 //
-// Implementation Database functions that finally call the fix or the csv database functions
+// Low-level Barcode Database functions
 // 
-// Martin Jansen
+// Ronny de Winter & Martin Jansen
 // 
-//#include "stdafx.h"
-#include <setjmp.h>
+
 #include <string.h>
 #include "lib.h"
 #include "ff.h"

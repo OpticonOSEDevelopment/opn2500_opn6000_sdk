@@ -1,8 +1,8 @@
 //------------------------------------------------------------------
 //  Batch mode application
 //------------------------------------------------------------------
-//  This demo allows the reading of barcodes, store them and
-//  transmit them by OseComm using USB.
+//  This application allows the reading of barcodes, store them and
+//  transmit them by OseComm or copy them as file in USB-MSD mode
 //
 //  This application also support the reading of the
 //  universal menu-book, so all sorts of barcode options can easily be tested.
@@ -15,18 +15,11 @@
 //------------------------------------------------------------------
 //  Version history:
 //
-//
-//  RFI37931    :       Bugfix for MSD and removing barcodes.
-//                      Minimal required OS version: RBIV0014b
-//                      Release date: April 10th, 2013
-//                      Author: Inanc Yigit
+//  FFN41010 (OPN2500)  Ported from the OPN2006 / PX20
+//  FFM41010 (OPN6000)  Minimal required OS version: FBxV0128
+//                      Release date: September 1, 2024
+//                      Author: Ronny de Winter
 //                      Company: Opticon Sensors Europe BV
-//
-//  RFI37930	:		Ported to the OPN2004.
-//                      Minimal required OS version: RBIV0010d
-//						Release date: March 15th, 2013
-//						Author: Inanc Yigit
-//						Company: Opticon Sensors Europe BV
 //
 //------------------------------------------------------------------
 // Includes
@@ -230,7 +223,7 @@ void SetReadMode(int readmode, int readtime)
 //------------------------------------------------------------------------------
 void ClearBarcodes(bool reopen)
 {
-	DeleteBarcodeMemory();
+	DeleteStorage();
 
 	if(reopen)
 		OpenStorage(); // Batch_OpenStorage();
@@ -275,7 +268,7 @@ void OnCommInfo(int status, int errorsuccess, int progress, const char *info)
 void Communicate(void)
 {
 	if (app.special_options == OSECOMM_COMMUNICATE)
-		OseComm(GetSerialNumber(), CRADLE_ABORT, GetApplVersion(), OnCommInfo);
+		OseComm(GetSerialNumber(), CONNECTION_ABORT, GetApplVersion(), OnCommInfo);
 }
 
 //------------------------------------------------------------------
@@ -317,7 +310,7 @@ int ExportBarcodeData(db_record *db_rec)
 	int result = OK;
 	
 	// RDW to be tested
-	if(coreleft() + fsize(FNAME_SCANNED_EXPORT) <  2 * fsize(DBASE_NAME) + fsize(DBASE_IDX))	// Please note that we need enough disk space to create the export file when we connect to USB
+	if(CoreLeft() + fsize(FNAME_SCANNED_EXPORT) <  2 * fsize(DBASE_NAME) + fsize(DBASE_IDX))	// Please note that we need enough disk space to create the export file when we connect to USB
 		return ERROR_FILESYSTEM;
 	
 	// Start building the output record
@@ -1006,7 +999,7 @@ int ExportDatabase(void)
 
 	if(records == 0)
 	{
-		DeleteBarcodeMemory();
+		DeleteStorage();
 	}
 
     GoodReadLed(ORANGE, 0);

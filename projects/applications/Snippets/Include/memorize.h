@@ -28,11 +28,11 @@ int OpenStorage(void);
 int CloseStorage(void);
 
 //------------------------------------------------------------------------------
-//	DeleteBarcodeMemory
+//	DeleteStorage
 //	=====================
 //	Deletes all barcodes from memory
 //-----------------------------------------------------------------------------
-void DeleteBarcodeMemory(void);
+void DeleteStorage(void);
 
 //------------------------------------------------------------------------------
 //	BarcodesInMemory
@@ -53,33 +53,33 @@ int UpdateBarcodeInMemory(struct barcode *pCode);
 //------------------------------------------------------------------------------
 //	DeleteBarcodeFromMemory
 //	========================
-//	Deletes the barcode that was last retrieved by 'GetCurrentBarcodeFromMemory'
+//	Deletes the barcode that was last retrieved by 'ReadCurrentBarcodeFromMemory' or 'ReadNextBarcodeFromMemory'
 //-----------------------------------------------------------------------------
 int DeleteCurrentBarcodeFromMemory(void);
 
+// Stores, delete, adds or removes the specified barcode with the given quantity
+int UpdateBarcodeInMemory(struct barcode *pCode);
+
+// Marks the current barcode as deleted (or decrease quantity)
+int DeleteCurrentBarcodeFromMemory(void);
+
+// Checks if last barcode in memory matches the specified barcode
+int IsLastBarcodeInMemory(struct barcode *pCode);
+
+// Find the last matching barcode in memory
 int FindFirstBarcodeInMemory(struct barcode *pCode);
+
+// Find the last matching barcode in memory
 int FindLastBarcodeInMemory(struct barcode *pCode);
 
-int IsLastBarcodeInMemory(struct barcode *pCode);
+// Returns the first available (not-deleted) barcode from memory
 int ReadCurrentBarcodeFromMemory(struct barcode *pCode);
+
+// Returns the next available (not-deleted) barcode from memory 
 int ReadNextBarcodeFromMemory(struct barcode *pCode);
+
+// Returns the first (not deteled) barcode in memory
 int ReadFirstBarcodeFromMemory(struct barcode *pCode);
+
+// Returns the last (not-deleted) barcode in memory
 int ReadLastBarcodeFromMemory(struct barcode *pCode);
-
-//------------------------------------------------------------------------------
-//	AdvanceMemoryIndex
-//	========================
-//	Moves the record index up by one
-//-----------------------------------------------------------------------------
-int AdvanceMemoryIndex(uint8_t qty_options);
-
-//------------------------------------------------------------------------------
-//	ResetMemoryIndex
-//	========================
-//	Moves the record index back to the beginning
-//-----------------------------------------------------------------------------
-void ResetMemoryIndex(void);
-
-
-int AllowDuplicates(void);
-int DontAllowDuplicates(void);

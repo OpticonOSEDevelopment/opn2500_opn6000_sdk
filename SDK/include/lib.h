@@ -290,6 +290,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define VSTANDARD           50    //!< Sets sound volume normal.
 #define VMEDIUM             75    //!< Sets sound volume medium.
 #define VHIGH               100   //!< Sets sound volume high.
+#define VSYSTEM             0xFE  //!< Sets sound volume the System volume set by Menu-labels & Systemsetting()
 
  /*
  * definitions for sound tone duration
@@ -299,18 +300,18 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define TSTANDARD           5   //!< Sets duration to normal buzz.
 #define TLONG               10  //!< Sets duration to long buzz.
 #define TVLONG              20  //!< Sets duration to very long buzz.
-#define ARG_POINTER			0x80
+#define ARG_POINTER         0x80
 
 /*
  * definitions for sound tone
  */
-#define SPAUSE              0x7FFF //!< Pause of 100 msec.
-#define REPEAT           	0xFFFE 	//!< Repeat previous.
-#define REPLAY           	0xFFFD 	//!< Replay complete sound
-#define REPLAY_X        	0xFFFC 	//!< Repeat sound from index X
-#define ADD_PAUSE          	0x8000 	//!< Flag to add a pause behind a tone
-#define SERROR              124    //!< Very low error sound.
-#define SVLOW               247   //!< Low sound.
+#define SPAUSE              0x7FFF  //!< Pause of 100 msec.
+#define REPEAT              0xFFFE  //!< Repeat previous.
+#define REPLAY              0xFFFD  //!< Replay complete sound
+#define REPLAY_X            0xFFFC  //!< Repeat sound from index X
+#define ADD_PAUSE           0x8000  //!< Flag to add a pause behind a tone
+#define SERROR              124     //!< Very low error sound.
+#define SVLOW               247    //!< Low sound.
 #define SLOW                1047   //!< Low sound.
 #define SMEDIUM             2489   //!< Medium sound.
 #define SHIGH               3520   //!< High sound.
@@ -319,7 +320,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define NOT_CONNECTED       0       //!< Not connect USB cable(VBUS).
 #define CHARGING            1       //!< Charging
 #define CHARGING_FULL       2       //!< Charge completed
-#define CHARGING_ERROR		3
+#define CHARGING_ERROR      3
 #define CHARGING_INIT       4      //!< Charging Not initialized
 #define CHARGING_RESUME     5      //!< Resume charging at next poll
 #define CHARGING_DISABLED   NOT_CONNECTED  
@@ -329,7 +330,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 /* UsbStatus Return codes */
 #define USB_OK                  0
 #define USB_ERR                 -1
-#define USB_ERR_NOTREADY		-2
+#define USB_ERR_NOTREADY        -2
 #define USB_NOT_CONNECTED		-3
 #define USB_ERR_VCPNOTOPEN		-4
 #define USB_ERR_BUSY			-5
@@ -832,9 +833,6 @@ int IsGoodReadActive(void);
  *  @return void
  */
 void Sound(int time, uint8_t vol, ...);
-
-/* Same as Sound, but with the configured volume setting */
-void Sound2(int time, ...);
 
 /** @brief Plays a series of beeps from an array of notes
  *

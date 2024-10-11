@@ -1,9 +1,9 @@
 //
-// Database.h
+// BarcodeDBase.h
 //
-// Database functions that finally call the fix or the csv functions
+// Low-level Barcode Database functions
 //
-// Martin Jansen
+// Ronny de Winter & Martin Jansen
 //
 
 #ifndef __BARCODEDBASE__

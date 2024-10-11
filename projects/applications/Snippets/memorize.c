@@ -7,7 +7,7 @@
 //  -----------+----------+----------------------------------------------------
 //	    /  /   |          |
 //  -----------+----------+----------------------------------------------------
-//	2010/01/xx | RBJVxxxx | OPR3301
+//	2024/10/01 | FAxV0127 | OPN6000 / OPN2500
 //
 //*****************************************************************************
 #include <string.h>
@@ -73,24 +73,26 @@ int CloseStorage(void)
 	return OK;
 }
 
+static long records = 0;
+
 //------------------------------------------------------------------------------
-//	DeleteBarcodeMemory
+//	DeleteStorage
 //	=====================
 //	Deletes all barcodes from memory
 //-----------------------------------------------------------------------------
-void DeleteBarcodeMemory(void)
+void DeleteStorage(void)
 {
 	//CloseStorage();
-	//f_unlink(DBASE_NAME);
+	//remove(DBASE_NAME);
+	//remove(DBASE_IDX);
 
 	dbFile.fdDb = NULL;		// Much quicker than a file close
 	dbFile.lTotalRecords = 0;
+	records = 0;
 
 	format();			// Much quicker than a file delete
 }
 
-static long records = 0;
-	
 //------------------------------------------------------------------------------
 //	BarcodesInMemory
 //	=====================
@@ -169,7 +171,7 @@ int DeleteCurrentBarcodeFromMemory(void)
 
 	if(!BarcodesInMemory())
 	{
-		DeleteBarcodeMemory();
+		DeleteStorage();
 	}
 	
 	return OK;
@@ -280,53 +282,4 @@ int ReadLastBarcodeFromMemory(struct barcode *pCode)
 		return ERROR;
 
 	return (ReadLastBarcode(&dbFile, pCode) == DATABASE_OK) ? OK : ERROR;
-}
-
-//------------------------------------------------------------------------------
-//	AdvanceMemoryIndex
-//	========================
-//	Moves the record index up by one
-//-----------------------------------------------------------------------------
-int AdvanceMemoryIndex(uint8_t qty_options)
-{
-	ENTRY e;
-
-	if(OpenStorage() != OK)	// Re-opens if closed
-		return ERROR;
-	
-	while( NextKey(&e, &(dbFile.ix)) == IX_OK )
-	{
-		if(e.quantity > 0)
-		{
-			return OK;
-		}
-		else if(e.quantity == 0)
-		{
-			if(qty_options & KEEP_ZERO_QUANTITY)
-				return OK;
-		}
-		else // e.quantity < 0 
-		{
-			if(qty_options & ALLOW_NEGATIVES)
-				return OK;
-		}
-	}
-
-	return ERROR;
-
-}
-
-//------------------------------------------------------------------------------
-//	ResetMemoryIndex
-//	========================
-//	Moves the record index back to the beginning
-//-----------------------------------------------------------------------------
-void ResetMemoryIndex(void)
-{
-	ENTRY e;
-
-	if(OpenStorage() != OK)	// Re-opens if closed
-		return;
-
-	FirstKey(&e, &(dbFile.ix));
 }

@@ -109,7 +109,7 @@ static bool set_to_known_default = FALSE;
 #define OkBeep_App			OkBeep
 #define MemorizeBeep_App	MemorizeBeep
 #define ErrBeep_App			ErrBeep
-#define Sound2_App			Sound2	
+#define Sound_App			Sound
 //
 
 #ifdef LOG_STATE
@@ -314,12 +314,12 @@ void GoodMenuBeep(int code_id)
 
 	if(code_id == MENU_CODE_C128 || code_id == MENU_CODE_QR || code_id == MENU_CODE_PDF || code_id == MENU_CODE_AZTEC)
 	{
-		Sound2_App(TSTANDARD, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
+		Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
 		Delay(TSTANDARD * 8);
 	}
 	else
 	{
-		Sound2_App(TSTANDARD, SHIGH, SMEDIUM, SHIGH, 0);
+		Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, SHIGH, 0);
 	}
 }
 
@@ -332,7 +332,7 @@ void BadMenuBeep(void)
 {
 	Vibrate(TLONG);
 
-	Sound2_App(TLONG, SLOW, 0);
+	Sound_App(TLONG, VSYSTEM, SLOW, 0);
 }
 
 //------------------------------------------------------------------
@@ -719,7 +719,7 @@ void ConnectionIndicator(int event_type)
 			if(!(app.options & BLE_CONNECT_BEEP))
 				return;
 			
-			Sound2(TVLONG, SHIGH, 0);
+			Sound(TVLONG, VSYSTEM, SHIGH, 0);
 			GoodReadLed(BLUE, TVLONG);
 			break;
 
@@ -727,7 +727,7 @@ void ConnectionIndicator(int event_type)
 			if(!(app.options & USB_CONNECT_BEEP))
 				return;
 
-			Sound2(TVLONG, SHIGH, 0);
+			Sound(TVLONG, VSYSTEM, SHIGH, 0);
 			GoodReadLed(GREEN, TVLONG);
 			break;
 
@@ -735,7 +735,7 @@ void ConnectionIndicator(int event_type)
 			if(!(app.options & BLE_CONNECT_BEEP))
 				return;
 
-			Sound2(TVLONG, SLOW, 0);
+			Sound(TVLONG, VSYSTEM, SLOW, 0);
 			GoodReadLed(BLUE_FLASH, 0);
 			break;
 
@@ -743,12 +743,12 @@ void ConnectionIndicator(int event_type)
 			if(!(app.options & USB_CONNECT_BEEP))
 				return;
 
-			Sound2(TVLONG, SLOW, 0);
+			Sound(TVLONG, VSYSTEM, SLOW, 0);
 			GoodReadLed(BLUE_FLASH, 0);
 			break;
 
 		case STATE_MANUAL_DISCONNECT:
-			Sound2_App(TVLONG, SHIGH, SLOW, 0);
+			Sound_App(TVLONG, VSYSTEM, SHIGH, SLOW, 0);
 			GoodReadLed(BLUE_FLASH, 0);
 			break;
 
@@ -758,7 +758,7 @@ void ConnectionIndicator(int event_type)
 			break;
 
 		case STATE_CONNECTABLE:
-			Sound2_App(TSTANDARD, SHIGH, SMEDIUM, 0);
+			Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, 0);
 			Delay(TSTANDARD * 3);		// Wait till buzzer Sound if finished before calling ComOpen, so it doesn't interfere with a disconnect beep if that feels
 			GoodReadLed(BLUE_FLASH, FOREVER);
 			break;
@@ -997,7 +997,7 @@ void ProcessMenuLabels(int res)
 			if( !BarcodesInMemory() )
 			{
 				GoodReadLed(ORANGE, 10);
-				Sound2_App(TSTANDARD, 800, SPAUSE, 800, 0);	//file empty beep
+				Sound_App(TSTANDARD, VSYSTEM, 800, SPAUSE, 800, 0);	//file empty beep
 				break;
 			}
 
@@ -1016,7 +1016,7 @@ void ProcessMenuLabels(int res)
 		case CONNECT_LABEL:
 			if( IsConnected_App() )						// If already connected
 			{
-				Sound2_App(TSTANDARD, SLOW, 0);
+				Sound_App(TSTANDARD, VSYSTEM, SLOW, 0);
 				break;
 			}
 
@@ -1047,7 +1047,7 @@ void ProcessMenuLabels(int res)
 
 			BltDeletePairs();	// This also closes the comport
 
-			Sound2_App(TSTANDARD, SHIGH, SMEDIUM, SHIGH,0);
+			Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, SHIGH,0);
 
 			GoodReadLed( GREEN, 10 );
 			Delay(75);
@@ -1078,7 +1078,7 @@ void ProcessMenuLabels(int res)
 			
 			if(connection_state == STATE_DISCONNECTED)
 			{
-				Sound2_App(TSTANDARD, SLOW, 0);
+				Sound_App(TSTANDARD, VSYSTEM, SLOW, 0);
 				GoodReadLed( ORANGE, 10 );
 			}
 			else
@@ -1097,15 +1097,15 @@ void ProcessMenuLabels(int res)
 		case MEMORIZE_CLEAR_LABEL:
 			if( BarcodesInMemory() )
 			{
-				Sound2_App( TSTANDARD, 3000, 2500, 0);	
+				Sound_App(TSTANDARD, VSYSTEM, 3000, 2500, 0);	
 				GoodReadLed( GREEN, 10 );
 			}
 			else
 			{
-				Sound2_App( TLONG, SLOW, 0);	
+				Sound_App(TLONG, VSYSTEM, SLOW, 0);	
 				GoodReadLed( ORANGE, 10 );
 			}
-			DeleteBarcodeMemory();		// Always call it, just to be sure
+			DeleteStorage();		// Always call it, just to be sure
 			break;
 
 		case MEMORIZE_START_LABEL:
@@ -1124,7 +1124,7 @@ void ProcessMenuLabels(int res)
 			}
 
 			xmit_state = TSTATE_NO_DATA;
-			Sound2_App(TSTANDARD, 3000, 2500, 0);	
+			Sound_App(TSTANDARD, VSYSTEM, 3000, 2500, 0);	
 			GoodReadLed(GREEN, 10);
 			break;
 		}
@@ -1149,7 +1149,7 @@ void ProcessMenuLabels(int res)
 				xmit_state_clr = TRUE;
 			}
 
-			Sound2_App(TSTANDARD, 3000, 2500, 0);	
+			Sound_App(TSTANDARD, VSYSTEM, 3000, 2500, 0);	
 			GoodReadLed(GREEN, 10);
 			break;
 		}
@@ -1165,7 +1165,7 @@ void ProcessMenuLabels(int res)
 			else
 			{
 				app.options &= ~(ENABLE_KEYBOARD_TOGGLE | ENABLE_WAKEUP_KEY);
-				Sound2_App(TSTANDARD, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, 0);
+				Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, SMEDIUM, 0);
 			}
 
 			Delay(TSTANDARD * 7);		// Wait till buzzer Sound if finished before saving (saving flash settings turns off Sound timer temporarily)
@@ -1508,7 +1508,7 @@ void LocateHostStateMachine(void)
 				
 				if(locate_host_state == LOCATE_HOST_STATE_ACTIVE)
 				{
-					Sound2(TSHORT, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
+					Sound(TSHORT, VSYSTEM, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
 					timer[LOCATE_HOST_TIMER] = 5;
 				}
 				else
@@ -1538,7 +1538,7 @@ void LocateHostStateMachine(void)
 
 			if( (ClearKeyPressed() && TriggerPressed()))
 			{
-				Sound2(TSHORT, SHIGH, SLOW, 0);
+				Sound(TSHORT, VSYSTEM, SHIGH, SLOW, 0);
 				locate_host_state = LOCATE_HOST_STATE_IDLE;
 				timer[LOCATE_HOST_TIMER] = TIMER_DISABLED;
 			}
@@ -1888,11 +1888,8 @@ void TransmitStateMachine(uint8_t new_barcode)
 						{
 							case OK:
 							case DC1:
-								//advance to the next record
 								if (xmit_state_clr)
 									DeleteCurrentBarcodeFromMemory();
-								//else
-								//	AdvanceMemoryIndex(0);
 								
 								connection_lost = FALSE;
 								break;
@@ -1901,7 +1898,7 @@ void TransmitStateMachine(uint8_t new_barcode)
 								GoodReadLed(ORANGE, 10);
 
 								if (app.buzzer_options & BUZZER_ENABLED)
-									Sound2_App(TSTANDARD, SLOW, 0);
+									Sound_App(TSTANDARD, VSYSTEM, SLOW, 0);
 
 								connection_lost = TRUE;
 								break;
@@ -1913,10 +1910,6 @@ void TransmitStateMachine(uint8_t new_barcode)
 
 					} while (ReadNextBarcodeFromMemory(&code) == OK);
 				}
-
-				//reset the memory index in the DB
-				//if (!xmit_state_clr)
-				//	ResetMemoryIndex();
 
 				//pop out of here if the connection was lost during transmit
 				if (connection_lost)
@@ -1938,7 +1931,7 @@ void TransmitStateMachine(uint8_t new_barcode)
 				//delete the barcode memory if +-MXMT-+
 				//DeleteBarcodeFromMemory should have already taken care of this, but it won't hurt to do it again 
 				if (xmit_state_clr)
-					DeleteBarcodeMemory();
+					DeleteStorage();
 			}
 			else
 			{
@@ -1946,7 +1939,7 @@ void TransmitStateMachine(uint8_t new_barcode)
 
 				//file empty beep
 				if (app.buzzer_options & BUZZER_ENABLED)
-					Sound2_App(TLONG, 800, SPAUSE, 800, 0);
+					Sound_App(TLONG, VSYSTEM, 800, SPAUSE, 800, 0);
 			}
 
 			xmit_state = TSTATE_NO_DATA;
@@ -2006,9 +1999,9 @@ void TransmitStateMachine(uint8_t new_barcode)
 								// If clear key pressed and timer passed
 								if( BarcodesInMemory() )
 								{
-									Sound2(TSTANDARD, SMEDIUM, SLOW, SMEDIUM, NULL);
+									Sound(TSTANDARD, VSYSTEM, SMEDIUM, SLOW, SMEDIUM, NULL);
 									GoodReadLed( ORANGE, 10 );
-									DeleteBarcodeMemory();		// Always call it, just to be sure
+									DeleteStorage();		// Always call it, just to be sure
 									xmit_state = TSTATE_NO_DATA;
 
 									if(timer[DISCONNECT] != TIMER_DISABLED && timer[DISCONNECT] == 0 && app.trigger_to_disconnect_time != 0)
@@ -2030,7 +2023,7 @@ void TransmitStateMachine(uint8_t new_barcode)
 
 				if(xmit)
 				{
-					Sound2(TSTANDARD, SHIGH, NULL);
+					Sound(TSTANDARD, VSYSTEM, SHIGH, NULL);
 					/*if( app.blt_interface == BLT_HID_DEVICE && (app.options & ENABLE_WAKEUP_KEY) )
 					{
 						PutnString("", 0);							// Force a wake-up
