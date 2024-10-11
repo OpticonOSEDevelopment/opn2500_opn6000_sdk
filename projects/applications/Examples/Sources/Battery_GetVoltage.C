@@ -1,5 +1,5 @@
 
-/* GetBatteryVoltage_mV() */
+/* Battery_GetVoltage() */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@ void main( void )
 
     for(;;)
     {
-		voltage[i] = GetBatteryVoltage_mV();
+		voltage[i] = Battery_GetVoltage();
 
 		printf("\r%dmV", voltage[(i+1) % 5]);		// Show voltage of 15 seonds earlier
 		

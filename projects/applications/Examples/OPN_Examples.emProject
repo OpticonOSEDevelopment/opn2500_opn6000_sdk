@@ -309,7 +309,7 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
-      <file file_name="Sources/GetBatteryVoltage_mV.C">
+      <file file_name="Sources/Battery_GetVoltage.C">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
