@@ -16,11 +16,15 @@
 	<TR class=setup>
 		<TD class=item>Description</TD>
 		<TD class=itemdescr>
-			This function returns a pointer to the version of the currently loaded operating system.
-			The pointer that is returned, points to a zero terminated character string. The first and
-			third character of the version string defines the terminal type, the second
-			character defines the software type (in this case B, operating system software).
-
+			This function returns the version of the Bootloader of the device.
+			The version is returned in an 8 character string and is terminated by a null character.<BR>
+			<BR>
+			<LU>
+				<LI>The first character defines the device Family ('F' = devices with nRF528xx CPU)</LI>
+				<LI>The second character defines the software type (`A` for Bootloader; `B` for OS; `F` for Application )</LI>
+				<LI>The third character defines the device model (`N` for OPN2500; `M` for OPN6000)</LI>
+			</LU>
+			
 			<TABLE class=OPTIONS width=100% >
 				<THEAD>
 					<TR>
@@ -39,17 +43,18 @@
 					</TR>
 				</TBODY>
 			</TABLE>
-			<BR>
-			Examples of version strings are:<BR>
 
-			FBNV0128 = OPN2500 O/S. version 1.28<BR>
-			FBMV0128 = OPN6000 O/S. version 1.28
+			<strong>Examples of version strings are:</strong><BR>
+
+			FBNV0128 = OPN2500 O/S version 1.28<BR>
+			FBMV0128 = OPN6000 O/S version 1.28
 		</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>char</SPAN> <A class=clib HREF="./GetOsVersion.html">*GetOsVersion</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>char</SPAN> <A class=clib HREF="./GetOsVersion.html">GetOsVersion</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
 	</TR>
+
 
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
@@ -63,6 +68,7 @@
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>None</TD>
 	</TR>
+
 	<TR class=setup>
 		<TD class=item>Example</TD>
 		<TD class=itemdescr>
@@ -70,25 +76,24 @@
 <SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
 <SPAN class=c-preprocessor>#include</SPAN> "lib.h"
 
-<SPAN class=c-preprocessor>#define</SPAN> VERSION "3894.1"               <SPAN class="c-comment">//Application version number</SPAN>
-
-
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
     <SPAN class=c-keyword>int</SPAN> key;
-    
+
+    <A class=clib HREF="./ResetKey.html">ResetKey</A>();
     printf("\nPress trigger key");
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <A class=clib HREF="./ResetKey.html">ResetKey</A>();
         <SPAN class=c-keyword>if</SPAN>( (key = getchar()) != EOF)
-        {          
+        {
+            <A class=clib HREF="./ResetKey.html">ResetKey</A>();
             <SPAN class=c-keyword>switch</SPAN>( key )
             {
                 <SPAN class=c-keyword>case</SPAN> TRIGGER_KEY:
-                    <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SHIGH, 0);                                       
+                    <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SHIGH, 0);
+                    printf("\Bootloader = %s", <A class=clib HREF="./GetBootVersion.html">GetBootVersion</A>());
                     printf("\nO/S = %s", <A class=clib HREF="./GetOsVersion.html">GetOsVersion</A>());
-                    printf("\nAPPL = %s", <A class=clib HREF="./GetApplVersion.html">GetApplVersion</A>);
+                    printf("\nAppl. = %s", <A class=clib HREF="./GetApplVersion.html">GetApplVersion</A>());
                     <SPAN class=c-keyword>break</SPAN>;
                 <SPAN class=c-keyword>default</SPAN>:
                     <A class=clib HREF="./Sound.html">Sound</A>( TCLICK, VHIGH, SLOW, 0);
@@ -104,6 +109,3 @@
 </TABLE>
 </BODY>
 </HTML>
-
-
-

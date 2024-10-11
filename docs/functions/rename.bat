@@ -10,7 +10,7 @@ rename delay.html Delay.html
 rename DownPressed.html DownPressed.html
 rename EndTimer.html EndTimer.html
 rename GetCom.html GetCom.html
-rename getcom2.html GetCom2.html
+rename GetCom2.html GetCom2.html
 rename GetCTS.html GetCTS.html
 rename GetDate.html GetDate.html
 rename getdatetime.html GetDateTime.html

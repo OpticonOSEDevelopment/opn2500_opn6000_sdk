@@ -16,11 +16,15 @@
 	<TR class=setup>
 		<TD class=item>Description</TD>
 		<TD class=itemdescr>
-			This function returns the version of the Bootloader of the handheld terminal.
-			The version is returned in an 8 character long string, and is terminated by the null character
-			'\0'. The first and third character of the version defines the terminal type, the second character
-			defines the software type (in this case A)
-
+			This function returns the version of the Bootloader of the device.
+			The version is returned in an 8 character string and is terminated by a null character.<BR>
+			<BR>
+			<LU>
+				<LI>The first character defines the device Family ('F' = devices with nRF528xx CPU)</LI>
+				<LI>The second character defines the software type (`A` for Bootloader; `B` for OS; `F` for Application )</LI>
+				<LI>The third character defines the device model (`N` for OPN2500; `M` for OPN6000)</LI>
+			</LU>
+			
 			<TABLE class=OPTIONS width=100% >
 				<THEAD>
 					<TR>
@@ -39,16 +43,16 @@
 					</TR>
 				</TBODY>
 			</TABLE>
-			<BR>
-			Examples of version strings are:<BR>
 
-			FANV0030 = OPN2500 Bootloader. version 0.30<BR>
-			FAMV0030 = OPN6000 Bootloader. version 0.30
+			<strong>Examples of version strings are:</strong><BR>
+
+			FANV0030 = OPN2500 Bootloader version 0.30<BR>
+			FAMV0030 = OPN6000 Bootloader version 0.30
 		</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>char</SPAN> <A class=clib HREF="./GetBootVersion.html">*GetBootVersion</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>char</SPAN> <A class=clib HREF="./GetBootVersion.html">GetBootVersion</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
 	</TR>
 
 
@@ -89,6 +93,7 @@
                     <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SHIGH, 0);
                     printf("\Bootloader = %s", <A class=clib HREF="./GetBootVersion.html">GetBootVersion</A>());
                     printf("\nO/S = %s", <A class=clib HREF="./GetOsVersion.html">GetOsVersion</A>());
+                    printf("\nAppl. = %s", <A class=clib HREF="./GetApplVersion.html">GetApplVersion</A>());
                     <SPAN class=c-keyword>break</SPAN>;
                 <SPAN class=c-keyword>default</SPAN>:
                     <A class=clib HREF="./Sound.html">Sound</A>( TCLICK, VHIGH, SLOW, 0);

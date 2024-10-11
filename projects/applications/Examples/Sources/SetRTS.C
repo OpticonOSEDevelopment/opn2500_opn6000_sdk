@@ -1,35 +1,24 @@
-
-/* setRTS() / setDTR() */
+// The following example demonstrates the use SetRTS() on USB-VCP ports
 
 #include <stdio.h>
 #include "lib.h"
 
 void main( void )
 {
-    int ch, rts=0, dtr=0;
-	
-	comopen( COM9 );			// USB-VCP COM-port
+    int key = -1;
+
+    ComOpen( COM9 );     // USB-VCP COM-port
 
     for(;;)
     {
-        if( (ch = getcom( 0 )) != -1)
-        {
-			sound(TSTANDARD, VHIGH, ch*100, 0);		// Beep on incoming data
-        }
+        printf("\nPress any key");
 
-        if( (ch = getchar()) != EOF)
-        {
-			if(ch == TRIGGER_KEY)
-			{
-				setRTS(rts);
-				rts = (rts) ? 0 : 1;
-			}
-			else // CLR_KEY
-			{
-				setDTR(dtr);
-				dtr = (dtr) ? 0 : 1;
-			}
-        }
-        idle();    // Important to lower the power consumption
+        ResetKey();
+
+        key = WaitKey();
+
+        SetRTS((key == TRIGGER_KEY) ? ON : OFF);
+
+        Idle();
     }
 }

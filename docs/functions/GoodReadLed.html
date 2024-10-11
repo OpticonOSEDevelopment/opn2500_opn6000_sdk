@@ -31,7 +31,9 @@
 
 			<H5><SPAN class=c-keyword>int</SPAN> <I>time</I></H5>
 			Defines the time the LED is on in steps of 20 milliseconds. After this time the LED will be
-			switched off. For examples, time = 25 specifies half a second. Two values have a special meaning.
+			switched off. For examples, time = 25 specifies half a second.<BR>
+			<BR>
+			Two values have a special meaning:
 			<TABLE class=OPTIONS width=100%>
 				<TR>
 					<TD>OFF</TD>
@@ -81,13 +83,13 @@
             <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( BLUE, 25);
             <A class=clib HREF="./Delay.html">Delay</A>( 50 );
         }
-        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( RED, -1);
+        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( RED | LED_FLASH, FOREVER);
         <A class=clib HREF="./Delay.html">Delay</A>( 200 );
         <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( RED, 0);
-        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( GREEN, -1);
+        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( GREEN | LED_FLASH, FOREVER);
         <A class=clib HREF="./Delay.html">Delay</A>( 200 );
         <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( GREEN, 0);
-        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( BLUE, -1);
+        <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( BLUE | LED_FLASH, FOREVER);
         <A class=clib HREF="./Delay.html">Delay</A>( 200 );
         <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( BLUE, 0);
     }

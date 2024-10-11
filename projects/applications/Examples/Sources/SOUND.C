@@ -1,24 +1,17 @@
-
-/* sound() */
-
-#include "lib.h"
 #include <stdio.h>
+#include "lib.h"
 
-void main(void)
+void main( void )
 {
-	for(;;)
-	{
-      sound(TCLICK,VHIGH,SERROR,SPAUSE,SLOW,SPAUSE,SMEDIUM,SPAUSE,SHIGH,0);
-      delay(200); // Wait 4 sec
-
-      sound(TSTANDARD,VHIGH,SERROR,SPAUSE,SLOW,SPAUSE,SMEDIUM,SPAUSE,SHIGH,0);
-      delay(200);
-
-      sound(TLONG,VHIGH,SERROR,SPAUSE,SLOW,SPAUSE,SMEDIUM,SPAUSE,SHIGH,0);
-      delay(200);
-
-      sound(TVLONG,VHIGH,SERROR,SPAUSE,SLOW,SPAUSE,SMEDIUM,SPAUSE,SHIGH,0);
-      delay(200);
-	}
+    for(;;)
+    {
+        Sound(TCLICK, VHIGH, SERROR, SPAUSE, SLOW, SPAUSE, SMEDIUM, SPAUSE, SHIGH,0);
+        Delay(200);   // Wait 4 sec
+        Sound(TSTANDARD, VMEDIUM, SERROR, SPAUSE, SLOW, SPAUSE, SMEDIUM, SPAUSE, SHIGH,0);
+        Delay(200);
+        Sound(TLONG, VLOW, SERROR, SPAUSE, SLOW, SPAUSE, SMEDIUM, SPAUSE, SHIGH,0);
+        Delay(200);
+        Sound(TVLONG, VSYSTEM, SERROR, SPAUSE, SLOW, SPAUSE, SMEDIUM, SPAUSE, SHIGH, 0);
+        Delay(200);
+    }
 }
-

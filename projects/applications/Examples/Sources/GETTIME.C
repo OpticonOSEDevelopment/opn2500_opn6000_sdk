@@ -1,5 +1,5 @@
 
-/* gettime() & GetDate() */
+/* GetTime() & GetDate() */
 
 #include <stdio.h>
 #include "lib.h"
@@ -13,7 +13,7 @@ void main( void )
 
     for(;;)
     {
-        gettime(&t);
+        GetTime(&t);
         GetDate(&d);
 
 		printf("\r\nTime: %2d:%02d:%02d", t.ti_hour, t.ti_min, t.ti_sec);

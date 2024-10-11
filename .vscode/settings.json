@@ -2,6 +2,8 @@
     "files.associations": {
         "GETTIME.C": "cpp",
         "GetBatteryVoltage_mV.C": "cpp",
-        "Battery_GetVoltage.C": "cpp"
+        "Battery_GetVoltage.C": "cpp",
+        "SetAlarm.C": "cpp",
+        "IsScannerOff.C": "cpp"
     }
 }

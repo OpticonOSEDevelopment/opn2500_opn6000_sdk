@@ -46,8 +46,39 @@
 	<TR class=setup>
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>
-			<A class=clib HREF="./SetRTS.html">SetRTS()</A> has no effect when used on other communications ports.<BR>
-			The default state of the RTS line is ON on the OPN200x.
+			<A class=clib HREF="./SetRTS.html">SetRTS()</A> has no effect on the USB-CDC driver. Use <A class=clib HREF="./SetRING.html">SetRING()</A> as alternative.<BR>
+			The default state of the RING line is OFF (Note that the default state of RTS is ON)
+		</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Example</TD>
+		<TD class=itemdescr>
+<PRE>
+<SPAN class=c-comment>// The following example demonstrates the use SetRTS() on USB-VCP ports</SPAN>
+
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
+
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <SPAN class="c-keyword">int</SPAN> key = -1;
+
+    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );     <SPAN class=c-comment>// USB-VCP COM-port</SPAN>
+
+    <SPAN class="c-keyword">for</SPAN>(;;)
+    {
+        printf(&quot;\nPress any key&quot;);
+
+        <A class="clib" href="./ResetKey.html">ResetKey</A>();
+
+        key = <A class="clib" href="./WaitKey.html">WaitKey</A>();
+
+        <A class=clib HREF="./SetRTS.html">SetRTS</A>((key == TRIGGER_KEY) ? ON : OFF);
+
+        <A class=clib HREF="./Idle.html">Idle</A>();
+    }
+}
+</PRE>
 		</TD>
 	</TR>
 </TABLE>

@@ -24,29 +24,24 @@ void main( void )
     code.max   = 41;
     code.text  = bcr_buf;
 
-	autopowerdown(ON, 5*50);				// 5 Seconds until power down
-	
-	autopowerdown(APD_SHUTDOWN_ON, 20*50);	// 20 Seconds until shut down
+    SystemSetting("8Z"); // Disable charge indicator (to avoid confusion about the LED color)
 
     //
     // The following function will try to restore application settings from flash memory
     // and will cause the configuration structure of this application to be stored
-    // in flash memory when 'systemsetting("Z2")' is called.
+    // in flash memory when 'SystemSetting("Z2")' is called.
     //
     if(ApplicationSettingsMemorizing(ON, (void *)&app, sizeof(app), VERSION_CHECK) < 0)
     {
         app.buzzer_frequency = SHIGH;       // Reset all application settings
         app.led_color = GREEN;
-        systemsetting("Z2");                // Save settings in flash
+        SystemSetting("Z2");                // Save settings in flash
     }
 
-	systemsetting("8Z"); // Disable charge indicator (to avoid confusion about the LED color)
-
-    scannerpower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after reading a single barcode
-
+    ScannerPower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after 1 barcode
     for(;;)
     {
-        if(readbarcode(&code) == OK)
+        if(ReadBarcode(&code) == OK)
         {
             save = TRUE;
 
@@ -61,18 +56,18 @@ void main( void )
             else
             {
                 save = FALSE;
-                printf("%s\r", code.text);	// No configuration barcode, so output the barcode by USB
+                printf("%s\r",code.text);	// No configuration barcode, so output the barcode by USB or Cradle
             }
 
             if(save)
             {
-                systemsetting("Z2");        // Store settings in flash
+                SystemSetting("Z2");        // Store settings in flash
             }
 
-            sound(TSTANDARD, VHIGH, app.buzzer_frequency, 0);
-            goodreadled(app.led_color, 10);
+            Sound(TSTANDARD, VHIGH, app.buzzer_frequency, 0);
+            GoodReadLed(app.led_color, 10);
         }
 
-        idle();        // Reduces power consumption
+        Idle();        // Reduces power consumption
     }
 }

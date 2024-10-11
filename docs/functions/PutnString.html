@@ -40,7 +40,7 @@
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>
 			- When no port is currently open, ERROR will be returned.<BR>
-			- Note that on the default port (COM0) is automatically opened at startup.
+			- Note that on the default port (COM9) is automatically opened at startup.
 		</TD>
 	</TR>
 	<TR class=setup>
@@ -54,7 +54,7 @@
 {
     <SPAN class=c-keyword>char</SPAN> buffer[] = "This is a string";
 
-    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM0 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
+    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
 
     <A class=clib HREF="./PutString.html">PutnString</A>(buffer, 4);
 

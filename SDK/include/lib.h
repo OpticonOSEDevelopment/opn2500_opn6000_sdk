@@ -494,25 +494,12 @@ struct ffblk
 void ScannerPower(int mode, int time);
 int ReadBarcode(struct barcode *barcodep);
 
-/** @brief Switches the scanner on, and starts barcode reading.
- *
- *  @return return_type
- */
-void ScannerOn(void);
-
-/** @brief Switches the scanner off.
- *
- *  @return void
- */
-void ScannerOff(void);
-
 /** @brief Returns if the scanner is on/off.
  *
  *  @retval TRUE(1)     Scanner is on.
  *  @retval FALSE(0)    Scanner is off.
  */
 int IsScannerOn(void);
-int Scanner_IsOn(void);
 
 /** @brief Returns if the scanner is off/on.
  *
@@ -541,8 +528,6 @@ void AimingOff(void);
 int IsAimingOn(void);
 
 void ResetReadTime(void);
-
-
 int SystemSettingsMemorizing(int on_off);
 int SystemSetting(const char *cstring);
 int ExecuteSystemsetting(const char *option);

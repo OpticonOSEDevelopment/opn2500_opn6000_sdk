@@ -138,7 +138,7 @@ void Application_Default(int comport)
 
 		default:
 			SystemSetting("OPND");			// Call OseComm default function
-			app.default_interface = COM0;
+			app.default_interface = COM9;
 			break;
 	}
 

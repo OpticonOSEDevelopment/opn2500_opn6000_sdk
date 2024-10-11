@@ -86,20 +86,20 @@
 {
     <SPAN class=c-keyword>int</SPAN> ch;
 
-    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM0 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
+    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <SPAN class=c-keyword>if</SPAN>( (ch = <A class=clib HREF="./getcom2.html">getcom2</A>( COM0, 0 )) != -1)
+        <SPAN class=c-keyword>if</SPAN>( (ch = <A class=clib HREF="./GetCom2.html">GetCom2</A>( COM9, 0 )) != -1)
         {
             putchar( ch );
-            <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM0, ch );
+            <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM9, ch );
         }
 
         <SPAN class=c-keyword>if</SPAN>( (ch = getchar()) != EOF)
         {
             putchar( ch );
-            <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM0, ch );
+            <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM9, ch );
         }
         <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>
     }

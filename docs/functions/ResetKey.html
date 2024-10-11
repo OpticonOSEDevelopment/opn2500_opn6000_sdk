@@ -9,68 +9,62 @@
 <H1>ResetKey</H1>
 
 <TABLE width=100% class=setup>
-	<TR class=setup>
-		<TD class=item>Availability</TD>
-		<TD class=itemdescr>All terminals</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Description</TD>
-		<TD class=itemdescr>This function clears the keyboard buffer.</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./ResetKey.html">ResetKey</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Arguments</TD>
-		<TD class=itemdescr>None</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Returns</TD>
-		<TD class=itemdescr>None</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Remarks</TD>
-		<TD class=itemdescr>
-			This function is useful when one wants to wait for a key press. Call this function
-			to prevent a previous keystroke, still in the keyboard buffer, causing e.g.
-			<A class=clib HREF="./kbhit.html">kbhit()</A> to return with TRUE.
-		</TD>
-	</TR>
-	<TR class=setup>
-		<TD class=item>Example</TD>
-		<TD class=itemdescr>
+    <TR class=setup>
+        <TD class=item>Availability</TD>
+        <TD class=itemdescr>All terminals</TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Description</TD>
+        <TD class=itemdescr>This function clears the keyboard buffer.</TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Syntax</TD>
+        <TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./ResetKey.html">ResetKey</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Arguments</TD>
+        <TD class=itemdescr>None</TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Returns</TD>
+        <TD class=itemdescr>None</TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Remarks</TD>
+        <TD class=itemdescr>
+            This function is useful when one wants to wait for a key press. Call this function
+            to prevent a previous keystroke, still in the keyboard buffer, causing e.g.
+            <A class=clib HREF="./kbhit.html">kbhit()</A> to return TRUE.
+        </TD>
+    </TR>
+    <TR class=setup>
+        <TD class=item>Example</TD>
+        <TD class=itemdescr>
 <PRE>
-<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
-<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
-
-<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+<SPAN class="c-preprocessor">#include</SPAN> &lt;stdio.h&gt;
+<SPAN class="c-preprocessor">#include</SPAN> &quot;lib.h&quot;
+    
+<SPAN class="c-keyword">void</SPAN> main( <SPAN class="c-keyword">void</SPAN> )
 {
-    <SPAN class=c-keyword>int</SPAN> x, y;
-
-    <SPAN class=c-keyword>for</SPAN>(;;)
+    <SPAN class="c-keyword">int</SPAN> color = GREEN;
+    
+    <SPAN class="c-keyword">for</SPAN>(;;)
     {
-        <SPAN class=c-keyword>for</SPAN>( x=0; x &lt; 96; x++)
-            <A class=clib HREF="./drawline.html">drawline</A>( x, 0, 50, 24, 1);
-
-        <SPAN class=c-keyword>for</SPAN>( y=0; y &lt; 48; y++)
-            <A class=clib HREF="./drawline.html">drawline</A>( 96, y, 50, 24, 1);
-
-        <SPAN class=c-keyword>for</SPAN>( x=96; x &gt;= 0; x--)
-            <A class=clib HREF="./drawline.html">drawline</A>( x, 47, 50, 24, 1);
-
-        <SPAN class=c-keyword>for</SPAN>( y=47; y &gt;= 0; y--)
-            <A class=clib HREF="./drawline.html">drawline</A>( 0, y, 50, 24, 1);
-
-        printf("\nPress a key");
-        <A class=clib HREF="./ResetKey.html">ResetKey</A>();
-        <SPAN class=c-keyword>while</SPAN>(!<A class=clib HREF="./kbhit.html">kbhit</A>())
-            <A class=clib HREF="./Idle.html">Idle</A>();
+        printf(&quot;\nPress any key&quot;);
+ 
+        <A class="clib" href="./ResetKey.html">ResetKey</A>();
+             
+        <SPAN class="c-keyword">while</SPAN>(!<A class="clib" href="./kbhit.html">kbhit</A>())
+            <A class="clib" href="./Idle.html">Idle</A>();
+  
+        <A class="clib" href="./GoodReadLed.html">GoodReadLed</A>(color, 50);        <SPAN class="c-comment">// ON, 1 second</SPAN>
+    
+        color = (color == GREEN) ? RED : GREEN;
     }
 }
 </PRE>
-		</TD>
-	</TR>
+        </TD>
+    </TR>
 </TABLE>
 </BODY>
 </HTML>

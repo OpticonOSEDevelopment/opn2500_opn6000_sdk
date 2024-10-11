@@ -163,7 +163,7 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Tries to fetch a barcode from the scanner</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./ScannerOff.html">ScannerOff</A></TD>
+						<TD><LI><A HREF="./IsScannerOff.html">IsScannerOff</A></TD>
 						<TD>Checks whether the scan engine is off</TD>
 					</TR>
 					<TR>
@@ -236,19 +236,19 @@ on how they conform or deviate from the ANSI standard.
 				<TABLE CLASS="para" ID="number5" width=100%>
 					<TR>
 						<TD width=25%><LI><A HREF="./ComOpen.html">ComOpen</A></TD>
-						<TD>Opens a port for serial communication</TD>
+						<TD>Opens a port for communication</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./ComClose.html">ComClose</A></TD>
-						<TD>Closes a serial communications port previously opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+						<TD>Closes a communications port</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./GetCom.html">GetCom</A></TD>
-						<TD>Reads a character from the serial communications port that was opened last by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+						<TD>Reads a character from the communications port that was opened last by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./getcom2.html">getcom2</A></TD>
-						<TD>Reads a character from the specified serial communications port</A></TD>
+						<TD><LI><A HREF="./GetCom2.html">GetCom2</A></TD>
+						<TD>Reads a character from the specified communications port</A></TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./GetCTS.html">GetCTS</A></TD>
@@ -260,19 +260,19 @@ on how they conform or deviate from the ANSI standard.
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./OseComm.html">OseComm</A></TD>
-						<TD>Uses a new protocol to transmit and receive one or more complete files through a serial communications port</TD>
+						<TD>Communication protocol to transmit and receive one or more complete files through a serial communications port</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./PutCom.html">PutCom</A></TD>
-						<TD>Putcom transmits a character through the serial communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+						<TD>Putcom transmits a character through the communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./PutCom2.html">PutCom2</A></TD>
-						<TD>Putcom2 transmits a character through the specified serial communications port</A></TD>
+						<TD>Putcom2 transmits a character through the specified communications port</A></TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./ResetReceive.html">ResetReceive</A></TD>
-						<TD>Resets the serial receive buffers and electronics of last opened COM-port</TD>
+						<TD>Resets the receive buffers of last opened COM-port</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./SetDTR.html">SetDTR</A></TD>
@@ -280,7 +280,11 @@ on how they conform or deviate from the ANSI standard.
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./SetRTS.html">SetRTS</A></TD>
-						<TD>Sets the level of the RTS line (for direct serial cable)</TD>
+						<TD>Sets the level of the RTS line (Only works with USB-VCP ports)</TD>
+					</TR>
+					<TR>
+						<TD><LI><A HREF="./SetRING.html">SetRING</A></TD>
+						<TD>Sets the level of the RING line (Only works with USB Serial ports)</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./PutBuffer.html">PutBuffer</A></TD>
@@ -507,7 +511,7 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Returns the version of the Bootlader</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./GeApplVersion.html">GetApplVersion</A></TD>
+						<TD><LI><A HREF="./GetApplVersion.html">GetApplVersion</A></TD>
 						<TD>Returns the version of the Application</TD>
 					</TR>
 				</TABLE>

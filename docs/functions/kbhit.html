@@ -34,21 +34,8 @@
         <TD class=itemdescr>
             Use the <A class=clib HREF="./Idle.html">Idle()</A> function when <A class=clib HREF="./kbhit.html">kbhit()</A>
             is used to wait for keyboard input.<BR>
-            The <A class=clib HREF="./setecho.html">setecho()</A> function controls displaying typed
-            characters in cooperation with <A class=clib HREF="./kbhit.html">kbhit()</A>.<BR>
-            When a user wants to wait for a key press, it is advised to call
-            <A class=clib HREF="./ResetKey.html">ResetKey()</A> first, in order to be sure that a
-            previous key, still in the keyboard buffer, doesn't cause
-            <A class=clib HREF="./kbhit.html">kbhit()</A> to return with TRUE.
-            <H4>Note:</H4>
-            <A class=clib HREF="./kbhit.html">kbhit()</A> is not a good method to wait for shifted characters,
-            because <A class=clib HREF="./kbhit.html">kbhit()</A>
-            will return before the character is completed. For shifted characters it is better to use the construction:
-<PRE>
-<SPAN class=c-keyword>int</SPAN> key;<BR>
-<SPAN class=c-keyword>while</SPAN>( (key = getchar()) == EOF)
-    <A class=clib HREF="./Idle.html">Idle</A>();
-</PRE>
+            When a user wants to wait for a key press, it is advised to call <A class=clib HREF="./ResetKey.html">ResetKey()</A> first, in order to be sure that a
+            previous key, still in the keyboard buffer, doesn't cause <A class=clib HREF="./kbhit.html">kbhit()</A> to return TRUE.
         </TD>
     </TR>
 
@@ -65,16 +52,16 @@
 
     <SPAN class="c-keyword">for</SPAN>(;;)
     {
-         printf(&quot;\nPress any key&quot;);
+        printf(&quot;\nPress any key&quot;);
 
-         <SPAN class="c-keyword">while</SPAN>(!<A class="clib" href="./kbhit.html">kbhit</A>())
+        <A class="clib" href="./ResetKey.html">ResetKey</A>();
+         
+        <SPAN class="c-keyword">while</SPAN>(!<A class="clib" href="./kbhit.html">kbhit</A>())
             <A class="clib" href="./Idle.html">Idle</A>();
 
-         <A class="clib" href="./ResetKey.html">ResetKey</A>();
+        <A class="clib" href="./GoodReadLed.html">GoodReadLed</A>(color, 50);        <SPAN class="c-comment">// ON, 1 second</SPAN>
 
-         <A class="clib" href="./GoodReadLed.html">GoodReadLed</A>(color, 50);        <SPAN class="c-comment">// ON, 1 second</SPAN>
-
-         color = (color == GREEN) ? (RED) : (GREEN);
+        color = (color == GREEN) ? RED : GREEN;
     }
 }
 </PRE>

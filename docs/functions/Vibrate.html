@@ -77,29 +77,16 @@
     code.max   = 41;
     code.text  = bcr_buf;
 
+    <A class=clib HREF="./ScannerPower.html">ScannerPower</A>(ON, 250);
+
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <SPAN class=c-keyword>if</SPAN>( !<A class=clib HREF="./ScannerOff.html">ScannerOff</A>())
+        <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./ReadBarcode.html">ReadBarcode</A>( &code ) == OK)
         {
-            <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./ReadBarcode.html">ReadBarcode</A>( &code ) == OK)
-            {
-                <SPAN class=c-keyword>if</SPAN>( (code.id != CODABAR) &&
-                    ( code.id != I2OF5) &&
-                    ( code.id != D2OF5) ||
-                    ( code.length > 5))
-                {
-                    <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( RED, 10);
-                    <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-                    <A class=clib HREF="./Vibrate.html">Vibrate</A>( TSTANDARD );
-                    <A class=clib HREF="./ScannerPower.html">ScannerPower</A>( OFF, 0);
-                    printf("%s\n",code.text);
-                }
-            }
-        }
-        <SPAN class=c-keyword>else</SPAN>
-        {
-            <A class=clib HREF="./Delay.html">Delay</A>( 50 );
-            <A class=clib HREF="./ScannerPower.html">ScannerPower</A>( ON, 250);
+            <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>(GREEN, 10);
+            <A class=clib HREF="./Sound.html">Sound</A>(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
+            <A class=clib HREF="./Vibrate.html">Vibrate</A>(TSTANDARD);
+            printf("%s\n",code.text);
         }
         <A class=clib HREF="./Idle.html">Idle</A>();
     }

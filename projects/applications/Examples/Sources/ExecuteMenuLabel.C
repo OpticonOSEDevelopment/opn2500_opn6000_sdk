@@ -1,103 +1,115 @@
-// This program executes menu labels from the Universal Menu Book and saves changed settings in flash
+
+
+
+// This program reads menu labels from the Universal Menu Book and executes them.
 
 #include <stdio.h>
 #include "lib.h"
 
-void main( void )
+void main(void)
 {
-    char bcr_buf[42] = {0};
-    struct barcode code  = {0};
-    int result;
+	char bcr_buf[42] = { 0 };
+	struct barcode code = { 0 };
+	int result;
 
-    code.min   = 1;
-    code.max   = 41;
-    code.text  = bcr_buf;
+	code.min = 1;
+	code.max = 41;
+	code.text = bcr_buf;
 
-	autopowerdown(ON, 5*50);				// 5 Seconds until power down
-	
-	autopowerdown(APD_SHUTDOWN_ON, 120*50);	// 120 Seconds until shut down
+	//
+	// The following function will try to restore system settings from flash memory and will cause
+	// system settings to be stored in flash memory when 'SystemSetting("Z2")' is called.
+	//
+	if (SystemSettingsMemorizing(ON) < 0)
+	{
+		SystemSetting("C01");               // If no old settings were found -> Reset to default
+	}
 
-    //
-    // The following function will try to restore system settings from flash memory and will cause
-    // system settings to be stored in flash memory when 'systemsetting("Z2")' is called.
-    //
-    if(SystemSettingsMemorizing(ON) < 0)
-    {
-        systemsetting("U2");               // If no old settings were found -> Reset to default
-    }
+	SystemSetting("YC");                   // Make sure menu labels are always enabled after a restart
 
-    systemsetting("YC");                   // Make sure menu labels are always enabled after a restart
+	ScannerPower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after 1 barcode
 
-    //scannerpower(TRIGGER | SINGLE, 250); // Disabling this allows the OS to take care of the configured read mode (default: SINGLE, 2 seconds)
+	for (;;)
+	{
+		if (ReadBarcode(&code) == OK)
+		{
+			result = 0;
 
-    for(;;)
-    {
-        if(readbarcode(&code) == OK)
-        {
-            result = 0;
-
-			if (code.id == MENU_CODE)	// Check for standard Code-39 menu labels (from the OSE Universal menu book)
+			if (code.id == MENU_CODE)
 			{
+				ScannerPower(ON, -1);        // Scanner on indefinitely
+
 				while (result != EXITING_MENU_MODE && result != ERROR)
 				{
-					if (result == 0 || readbarcode(&code) == OK)
+					if (result == 0 || ReadBarcode(&code) == OK)
 					{
 						switch ((result = ExecuteMenuLabel(&code)))
 						{
-							case ENTERING_MENU_MODE:
-								sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
-								break;
+						case ENTERING_MENU_MODE:
+							Sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
+							break;
 
-							case EXITING_MENU_MODE:
-								sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
-								delay(TSTANDARD * 5);	// Wait till buzzer sound if finished before saving (saving flash settings turns off sound timer temporarily)
-								systemsetting("Z2");		// Save changed settings in flash memory and apply possibly changed interface
-								break;
+						case EXITING_MENU_MODE:
+							ScannerPower(OFF, 0);
+							Sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
+							Delay(TSTANDARD * 4);        // Wait till buzzer sound ends before saving (saving flash settings temp. turns of sound timer)
+							SystemSetting("Z2");         // Save changed settings in flash memory
 
-							case INVALID_OPTION_READ:
-								sound(TLONG, VHIGH, SLOW, 0);
-								break;
+							while (TriggerPressed())      // Wait for release before resetting read mode
+								Idle();
 
-							case VALID_OPTION_READ:
-								sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
-								break;
+							ScannerPower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
+							break;
 
-							case LABEL_IGNORED:
-								break;
+						case INVALID_OPTION_READ:
+							Sound(TLONG, VHIGH, SLOW, 0);
+							break;
 
-							case ERROR:
-								break;
+						case VALID_OPTION_READ:
+							Sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
+							break;
+
+						case LABEL_IGNORED:
+							break;
+
+						case ERROR:
+							ScannerPower(OFF, 0);
+
+							while (TriggerPressed())      // Wait for release before resetting read mode
+								Idle();
+
+							ScannerPower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
+							break;
 						}
 					}
 				}
 			}
-			else if (code.id == MENU_CODE_C128)	// Check for Code-128 menu labels
+			else if (code->id == MENU_CODE_PDF || code->id == MENU_CODE_C128 || code->id == MENU_CODE_QR || code->id == MENU_CODE_AZTEC)        // Check for Code-128 / PDF417 / QR / Aztec menu labels)
 			{
-				switch ((result = ExecuteMenuLabel(&code)))
+				switch ((result = ExecuteMenuLabel(code)))
 				{
-					case INVALID_OPTION_READ:
-						sound(TLONG, VHIGH, SLOW, 0);
-						break;
+				case INVALID_OPTION_READ:
+					Sound(TLONG, VHIGH, SLOW, 0);
+					break;
 
-					case VALID_OPTION_READ:
-						sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
-						delay(TSTANDARD * 5);	// Wait till buzzer sound if finished before saving (saving flash settings turns off sound timer temporarily)
-						systemsetting("Z2");	// Save changed settings in flash memory and apply possibly changed interface
-						break;
+				case VALID_OPTION_READ:
+					Sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, SMEDIUM, SHIGH, 0);
+					Delay(TSTANDARD * 4);        // Wait till buzzer sound ends before saving (saving flash settings temp. turns of sound timer)
+					SystemSetting("Z2");         // Save changed settings in flash memory
+					break;
 
-					case LABEL_IGNORED:
-					default:
-						break;
+				default:
+					break;
 				}
 			}
-            else
-            {
-                goodreadled(GREEN, 10);
-                sound( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-                printf("%s\r", code.text);
-            }
-        }
+			else
+			{
+				GoodReadLed(GREEN, 10);
+				Sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
+				PutString(code.text);
+			}
+		}
 
-        idle();
-    }
+		Idle();
+	}
 }

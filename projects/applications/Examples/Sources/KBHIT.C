@@ -1,6 +1,3 @@
-
-/* kbhit() */
-
 #include <stdio.h>
 #include "lib.h"
 
@@ -12,15 +9,13 @@ void main( void )
     {
          printf("\nPress any key");
 
+         ResetKey();
+         
          while(!kbhit())
-            idle();
+            Idle();
 
-         resetkey();
+         GoodReadLed(color, 50);        // ON, 1 second
 
-         goodreadled(color, 50);        // ON, 1 second
-
-         color = (color == GREEN) ? (RED) : (GREEN);
+         color = (color == GREEN) ? RED : GREEN;
     }
 }
-
- 

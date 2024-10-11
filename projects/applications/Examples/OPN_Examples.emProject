@@ -63,7 +63,7 @@
       linker_printf_width_precision_supported="Yes"
       linker_scanf_fmt_level="long"
       linker_section_placement_file="flash_placement.xml"
-      macros="OS_VERSION=V0127o;BOOTLOADER_VERSION=V0030;APP_VERSION=xxxx0;CPU=nRF52840"
+      macros="OS_VERSION=V0127p;BOOTLOADER_VERSION=V0030;APP_VERSION=xxxx0;CPU=nRF52840"
       post_build_command="$(ProjectDir)/postbuild.bat $(BOARD) $(OS_VARIANT)$(OS_VERSION) $(APP_VARIANT)$(APP_VERSION) $(BOOTLOADER_VARIANT)$(BOOTLOADER_VERSION) $(CPU)"
       post_build_command_wd="$(ProjectDir)/$(OutDir)"
       pre_build_command="$(ProjectDir)/prebuild.bat $(BOARD)"
@@ -71,20 +71,6 @@
       project_directory=""
       project_type="Executable" />
     <folder Name="Examples">
-      <file file_name="Sources/AUTOPOW.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
       <file file_name="Sources/AddMenuOptionTable.C">
         <configuration
           Name="Debug OPN2500_Examples"
@@ -100,6 +86,34 @@
           build_exclude_from_build="Yes" />
       </file>
       <file file_name="Sources/ApplicationSettingsMemorizing.C">
+        <configuration
+          Name="Debug OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Debug OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Sources/AUTOPOW.C">
+        <configuration
+          Name="Debug OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Debug OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Sources/Battery_GetVoltage.C">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -141,7 +155,7 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
-      <file file_name="Sources/COMOPEN_CLOSE.C">
+      <file file_name="Sources/ClearKeyAsTrigger.c">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -153,23 +167,15 @@
           build_exclude_from_build="Yes" />
         <configuration
           Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Sources/ComClose.c" />
+      <file file_name="Sources/ComOpen.c">
+        <configuration
+          Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
       </file>
       <file file_name="Sources/CORELEFT.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Sources/ClearKeyAsTrigger.c">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -200,7 +206,7 @@
       <file file_name="Sources/ExecuteMenuLabel.C">
         <configuration
           Name="Debug OPN2500_Examples"
-          build_exclude_from_build="No" />
+          build_exclude_from_build="Yes" />
         <configuration
           Name="Debug OPN6000_Examples"
           build_exclude_from_build="No" />
@@ -267,6 +273,20 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
+      <file file_name="Sources/GetSerialNumber.C">
+        <configuration
+          Name="Debug OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Debug OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
       <file file_name="Sources/GETTICKCOUNT.C">
         <configuration
           Name="Debug OPN2500_Examples"
@@ -296,34 +316,6 @@
           build_exclude_from_build="Yes" />
       </file>
       <file file_name="Sources/GOODREAD.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Sources/Battery_GetVoltage.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Sources/GetSerialNumber.C">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -435,21 +427,7 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
-      <file file_name="Sources/SOUND.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Sources/SYSTIME.C">
+      <file file_name="Sources/resetreceive.C">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -491,7 +469,35 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
+      <file file_name="Sources/SOUND.C">
+        <configuration
+          Name="Debug OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Debug OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
       <file file_name="Sources/SystemSettingsMemorizing.C">
+        <configuration
+          Name="Debug OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Debug OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN2500_Examples"
+          build_exclude_from_build="Yes" />
+        <configuration
+          Name="Release OPN6000_Examples"
+          build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Sources/SYSTIME.C">
         <configuration
           Name="Debug OPN2500_Examples"
           build_exclude_from_build="Yes" />
@@ -575,34 +581,6 @@
           Name="Release OPN6000_Examples"
           build_exclude_from_build="Yes" />
       </file>
-      <file file_name="Sources/code_len.c">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Sources/resetreceive.C">
-        <configuration
-          Name="Debug OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Debug OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN2500_Examples"
-          build_exclude_from_build="Yes" />
-        <configuration
-          Name="Release OPN6000_Examples"
-          build_exclude_from_build="Yes" />
-      </file>
     </folder>
     <folder Name="SDK">
       <folder Name="Firmware">
@@ -642,10 +620,10 @@
         <file file_name="../../../SDK/softdevice/s113/hex/s113_nrf52_7.3.0_softdevice.hex" />
       </folder>
       <folder Name="Include">
-        <file file_name="../../../SDK/include/Debug.h" />
         <file file_name="../../../SDK/include/app_util.h" />
         <file file_name="../../../SDK/include/boards.h" />
         <file file_name="../../../SDK/include/compiler_abstraction.h" />
+        <file file_name="../../../SDK/include/Debug.h" />
         <file file_name="../../../SDK/include/lib.h" />
         <file file_name="../../../SDK/include/lib_legacy.h" />
         <file file_name="../../../SDK/include/nordic_common.h" />

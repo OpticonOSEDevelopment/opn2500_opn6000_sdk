@@ -1,31 +1,39 @@
-/* coreleft() */
-
+// This program executes menu labels and demonstrates the adding of menu options to the OS
 #include <stdio.h>
-#include <string.h>
 #include "lib.h"
+
+#define VERSION    "DEMO1.0"
 
 unsigned char buzzer_enabled;
 
 // Customized default
 void Custom_Default(void)
 {
-    systemsetting("U2");            // Inherit OS menu option "U2"
-    systemsetting("A0");            // Enable all decoders
+    SystemSetting("U2");            // Inherit OS menu option "U2"
+    SystemSetting("A0");            // Enable all decoders
     buzzer_enabled = TRUE;
-    systemsetting("YC");            // Enable menu labels
+    SystemSetting("YC");            // Enable menu labels
+}
+
+// Output OS, bootloader and application version
+void Version_Output(void)
+{
+    SystemSetting("Z1");            // Inherit OS menu option "Z1"
+    printf("%s\r", VERSION);
 }
 
 //
-// The following table implements systemsetting options that need to be added to the OS or overruled
+// The following table implements SystemSetting options that need to be added to the OS or overruled
 //
-// Note: The use of 'systemsetting()' inside the functions in the table below is limited to protect against recursion.
-//       It is still possible to use systemsetting() but only with 1 menu option per function call.
+// Note: The use of 'SystemSetting()' inside the functions in the table below is limited to protect against recursion.
+//       It is still possible to use SystemSetting() but only with 1 menu option per function call.
 //
 const OPTION menu_option_table[] =
 {                                                // CLEAR mask                              SET mask (use 0xFF 0xFF in case of a function call)
     { "U2",(void*)Custom_Default,                   0xFF,                                   0xFF                        },
     { "W0",(void*)&(buzzer_enabled),                0x01,                                   0x00                        },
     { "W8",(void*)&(buzzer_enabled),                0x00,                                   0x01                        },
+    { "Z1",(void*)Version_Output,                   0xFF,                                   0xFF                        },
 };
 
 #define MAX_OPTIONS sizeof(menu_option_table)/sizeof(OPTION)
@@ -42,62 +50,62 @@ void main( void )
     //
     AddMenuOptionTable(menu_option_table, MAX_OPTIONS);
 
-    systemsetting("U2");        // Reset to customized default
+    SystemSetting("U2");        // Reset to customized default
 
     code.min   = 1;
     code.max   = 41;
     code.text  = bcr_buf;
 
-    scannerpower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after 1 barcode
+    ScannerPower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after 1 barcode
 
     for(;;)
     {
-        if(readbarcode(&code) == OK)
+        if(ReadBarcode(&code) == OK)
         {
             result = 0;
 
             if(code.id == MENU_CODE)
             {
-                scannerpower(ON, -1);        // Scanner on indefinitely
+                ScannerPower(ON, -1);        // Scanner on indefinitely
 
                 while(result != EXITING_MENU_MODE && result != ERROR)
                 {
-                    if(result == 0 || readbarcode(&code) == OK)
+                    if(result == 0 || ReadBarcode(&code) == OK)
                     {
                        switch( (result=ExecuteMenuLabel(&code)) )
                        {
                            case ENTERING_MENU_MODE:
-                               sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
+                               Sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
                                break;
 
                            case EXITING_MENU_MODE:
-                               scannerpower(OFF, 0);
-                               sound(TSTANDARD,VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
+                               ScannerPower(OFF, 0);
+                               Sound(TSTANDARD,VHIGH, SHIGH, SMEDIUM, SHIGH, 0);
 
-                               while(triggerpressed())               // Wait for release before resetting read mode
-                                   idle();
+                               while(TriggerPressed())               // Wait for release before resetting read mode
+                                   Idle();
 
-                               scannerpower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
+                               ScannerPower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
                                break;
 
                            case INVALID_OPTION_READ:
-                               sound(TLONG, VHIGH, SLOW, 0);
+                               Sound(TLONG, VHIGH, SLOW, 0);
                                break;
 
                            case VALID_OPTION_READ:
-                               sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH,0);
+                               Sound(TSTANDARD, VHIGH, SHIGH, SMEDIUM, SHIGH,0);
                                break;
 
                            case LABEL_IGNORED:
-							   break;
+                               break;
 
                            case ERROR:
-							   scannerpower(OFF, 0);
+                               ScannerPower(OFF, 0);
 
-							   while(triggerpressed())               // Wait for release before resetting read mode
-                                   idle();
+                               while(TriggerPressed())               // Wait for release before resetting read mode
+                                   Idle();
 
-                               scannerpower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
+                               ScannerPower(TRIGGER | SINGLE, 250);  // Reset read mode, because it's turned off after reading menu labels
                                break;
                         }
                     }
@@ -106,12 +114,12 @@ void main( void )
             else
             {
                 if(buzzer_enabled)        // Read menu option "W0" and "W8" to enable/disabled the buzzer
-                    sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
+                    Sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
 
-                goodreadled(GREEN, 10);
+                GoodReadLed(GREEN, 10);
             }
         }
 
-        idle();        // Reduces power consumption
+        Idle();        // Reduces power consumption
     }
 }

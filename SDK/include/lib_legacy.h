@@ -33,7 +33,7 @@
 #define ischarging                  IsCharging           // int ischarging(void);
 
 // Date & time functions
-#define GetDate                     GetDate              // void GetDate(struct date *dp);
+#define GetDate                     GetDate              // void getdate(struct date *dp);
 #define gettime                     GetTime              // void gettime(struct time *tp);
 #define checktime                   CheckTime            // int checktime(struct time *timep);
 #define checkdate                   CheckDate            // int checkdate(struct date *datep);
@@ -65,7 +65,7 @@
 #define comopen						ComOpen				// int comopen(unsigned int port);
 #define comclose					ComClose			// void comclose(unsigned int port);
 #define getcom						GetCom				// int getcom(int timeout);
-#define getcom2						GetCom2				// int getcom2(int port, int timeout);
+#define GetCom2						GetCom2				// int GetCom2(int port, int timeout);
 #define putcom						PutCom				// int putcom(int data);
 #define putcom2						PutCom2				// int putcom(int port, int data);
 #define resetreceive				ResetReceive		// void resetreceive(void);
@@ -103,5 +103,4 @@
 
 #define main						app_main				// void main(void)
 
-#define getchar						WaitKey
 #endif		// __LIB_LEGACY_H__

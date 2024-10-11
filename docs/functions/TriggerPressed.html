@@ -16,9 +16,7 @@
 	<TR class=setup>
 		<TD class=item>Description</TD>
 		<TD class=itemdescr>
-			This function returns the current state of the trigger key. The trigger key is the
-			large button that must be pressed to switch on the scan engine for barcode scanning.<BR>
-			The trigger key can be either pressed or not pressed.
+			This function returns the current state of the trigger key.
 		</TD>
 	</TR>
 	<TR class=setup>
@@ -44,17 +42,11 @@
 			</TABLE>
 		</TD>
 	</TR>
-
 	<TR class=setup>
 	<TD class=item>Remarks</TD>
 	<TD class=itemdescr>
-		When the trigger key is pressed down this event is interpreted as a key stroke.
-		The key stroke is placed in the keyboard buffer as TRIGGER_KEY (for devices with full keyboards) or
-		as ENT_KEY (for devices without full keyboards). The function getchar() will return the key
-		stroke as TRIGGER_KEY or ENT_KEY.<BR>
-		The function <A class=clib HREF="./TriggerPressed.html">TriggerPressed()</A> returns
-		the current state of the trigger key. The function getchar() returns TRIGGER_KEY or
-		ENT_KEY when a transition took place from not pressed to pressed.
+		When the trigger key is pressed down this event is interpreted as a key stroke.<BR>
+		The key stroke is placed in the keyboard buffer as TRIGGER_KEY, which can be returned by the function getchar()<BR>
 	</TD>
 	</TR>
 

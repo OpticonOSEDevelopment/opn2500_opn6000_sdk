@@ -13,9 +13,9 @@ void main( void )
     {
 		if(powereddown())					// Returns true once after being powered down or restart
 		{
-			sound( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
+			Sound( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
 
-			gettime( &AlarmTime );					// Get current time
+			GetTime( &AlarmTime );					// Get current time
     
 			AlarmTime.ti_sec = 0;
 			AlarmTime.ti_min += 1;					// Set Alarm to next minute
