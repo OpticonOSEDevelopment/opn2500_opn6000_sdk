@@ -16,7 +16,7 @@ void main( void )
             {
                 case TRIGGER_KEY:
                     Sound( TSTANDARD, VHIGH, SHIGH, 0);
-                    printf("\Bootloader = %s", GetBootVersion());
+                    printf("\nBootloader = %s", GetBootVersion());
                     printf("\nO/S = %s", GetOsVersion());
                     printf("\nAppl. = %s", GetApplVersion());
                     break;

@@ -1,5 +1,3 @@
-call dir
-
 @echo off
 setlocal enabledelayedexpansion
 
@@ -45,8 +43,8 @@ set CPU_VERSION=%5
 
 set SOFTDEVICE=s113_nrf52_7.3.0_softdevice
 
-echo CPU = %CPU_VERSION%
-echo SD = %SOFTDEVICE%
+rem echo CPU = %CPU_VERSION%
+rem echo SD = %SOFTDEVICE%
 
 if "%BOOTLOADER%" == "" (
 	echo "Bootloader %4 not Found"
@@ -76,9 +74,9 @@ if "%APP_VERSION_NR%" == "" (
 :: Get the last character
 set "APP_VERSION=%APP_VERSION:~-1%"
 
-echo BOOT_VERSION = %BOOT_VERSION%
-echo APP_VERSION = %APP_VERSION%
-echo APP_VERSION_NR = %APP_VERSION_NR%
+rem echo BOOT_VERSION = %BOOT_VERSION%
+rem echo APP_VERSION = %APP_VERSION%
+rem echo APP_VERSION_NR = %APP_VERSION_NR%
 
 set SOFTDEVICE_FILE="..\..\..\..\..\..\SDK\softdevice\s113/hex\%SOFTDEVICE%.hex"
 set BOOTLOADER_FILE="..\..\..\..\..\..\SDK\firmware\bootloader\%BOOTLOADER%.hex"

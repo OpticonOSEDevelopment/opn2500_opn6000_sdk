@@ -1,16 +1,17 @@
+
 #include <stdio.h>
 #include "lib.h"
 
-void main(void)
+void main( void )
 {
-	SystemSetting("WK");    // Key click on
+    SystemSetting("WK");    // Key click on
 
-	for (;;)
-	{
-		printf("\nHello world");
+    for(;;)
+    {
+        printf("\nHello world");
 
-		ResetKey();
-		while (!kbhit())
-			Idle();
-	}
+        ResetKey();
+        while( !kbhit())
+            Idle();
+    }
 }

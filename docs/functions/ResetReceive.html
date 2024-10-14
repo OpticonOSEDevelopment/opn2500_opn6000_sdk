@@ -49,50 +49,24 @@
 
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
-    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
+    <SPAN class=c-keyword>int</SPAN> ch;
+
+    <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the USB-VCP port</SPAN>
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <SPAN class=c-keyword>for</SPAN>(;;)
+        <A class=clib HREF="./ResetReceive.html">ResetReceive</A>();    <SPAN class=c-comment>// Clear receive buffer</SPAN>
+
+        <SPAN class=c-keyword>while</SPAN>(<A class=clib HREF="./GetCom.html">GetCom</A>( 0 ) != CR)   <SPAN class=c-comment>// Wait for enter</SPAN>
         {
-            <A class=clib HREF="./ResetKey.html">ResetKey</A>();
-            <A class=clib HREF="./ResetReceive.html">ResetReceive</A>();
-            printf("\nReceiving..\n");
-            <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./xmodemreceive.html">xmodemreceive</A>("test.dat") != XMR_OK)
-            {
-                printf("\nERROR:\nfile not received\npress any key");
-                <SPAN class=c-keyword>while</SPAN>( !<A class=clib HREF="./kbhit.html">kbhit</A>())
-                    <A class=clib HREF="./Idle.html">Idle</A>();
-                <SPAN class=c-keyword>continue</SPAN>;
-            }
-
-            printf("file Received OK\n\rPress key\n\r");
-            <SPAN class=c-keyword>while</SPAN>( !<A class=clib HREF="./kbhit.html">kbhit</A>())
-                <A class=clib HREF="./Idle.html">Idle</A>();
-            <SPAN class=c-keyword>break</SPAN>;
+            <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>
         }
-
-        <SPAN class=c-keyword>for</SPAN>(;;)
-        {
-            <A class=clib HREF="./ResetKey.html">ResetKey</A>();
-            <A class=clib HREF="./ResetReceive.html">ResetReceive</A>();
-            printf("\nSending..\n");
-            <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./xmodemtransmit.html">xmodemtransmit</A>("test.dat") != XMT_OK)
-            {
-                printf("\nERROR:\nfile not send\npress any key");
-                <SPAN class=c-keyword>while</SPAN>( !<A class=clib HREF="./kbhit.html">kbhit</A>())
-                    <A class=clib HREF="./Idle.html">Idle</A>();
-                <SPAN class=c-keyword>continue</SPAN>;
-            }
-
-            printf("file send OK\n\rPress key\n\r");
-            <SPAN class=c-keyword>while</SPAN>( !<A class=clib HREF="./kbhit.html">kbhit</A>())
-                <A class=clib HREF="./Idle.html">Idle</A>();
-            <SPAN class=c-keyword>break</SPAN>;
-        }
+        <A class=clib HREF="./PutCom.html">PutCom</A>( '!' );
+        
+        <A class=clib HREF="./Delay.html">Delay</A>(2 * 50);    <SPAN class=c-comment>// Ignore all data for 2 seconds</SPAN>
     }
 }
-</PRE>
+    </PRE>
 		</TD>
 	</TR>
 </TABLE>

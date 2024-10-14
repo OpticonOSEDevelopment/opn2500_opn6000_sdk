@@ -95,8 +95,6 @@
 <SPAN class="c-preprocessor">#include &lt;stdio.h&gt;</SPAN>
 <SPAN class="c-preprocessor">#include &quot;lib.h&quot;</SPAN>
 
-<SPAN class="c-preprocessor">#define VERSION    &quot;DEMO1.0&quot;</SPAN>
-
 <SPAN class="c-keyword">unsigned</SPAN> <SPAN class="c-keyword">char</SPAN> buzzer_enabled;
 
 <SPAN class="c-comment">// Customized default</SPAN>
@@ -106,13 +104,6 @@
     <A class="clib" href="../functions/SystemSetting.html">SystemSetting</A>(&quot;A0&quot;);            <SPAN class="c-comment">// Enable all decoders</SPAN>
     buzzer_enabled = TRUE;
     <A class="clib" href="../functions/SystemSetting.html">SystemSetting</A>(&quot;YC&quot;);            <SPAN class="c-comment">// Enable menu labels</SPAN>
-}
-
-<SPAN class="c-comment">// Output OS, bootloader and application version</SPAN>
-<SPAN class="c-keyword">void</SPAN> Version_Output(<SPAN class="c-keyword">void</SPAN>)
-{
-    <A class="clib" href="../functions/SystemSetting.html">SystemSetting</A>(&quot;Z1&quot;);            <SPAN class="c-comment">// Inherit OS menu option &quot;Z1&quot;</SPAN>
-    printf(&quot;%s\r&quot;, VERSION);
 }
 
 <SPAN class="c-comment">//</SPAN>
@@ -126,7 +117,6 @@
     { &quot;U2&quot;,(<SPAN class="c-keyword">void</SPAN>*)Custom_Default,                   0xFF,                                   0xFF                        },
     { &quot;W0&quot;,(<SPAN class="c-keyword">void</SPAN>*)&amp;(buzzer_enabled),                0x01,                                   0x00                        },
     { &quot;W8&quot;,(<SPAN class="c-keyword">void</SPAN>*)&amp;(buzzer_enabled),                0x00,                                   0x01                        },
-    { &quot;Z1&quot;,(<SPAN class="c-keyword">void</SPAN>*)Version_Output,                   0xFF,                                   0xFF                        },
 };
 
 <SPAN class="c-preprocessor">#define MAX_OPTIONS <SPAN class="c-keyword">sizeof</SPAN>(menu_option_table)/sizeof(OPTION)</SPAN>

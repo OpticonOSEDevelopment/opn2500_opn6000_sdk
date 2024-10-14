@@ -159,9 +159,9 @@
                     }
                 }
             }
-            <SPAN class="c-keyword">else if</SPAN> (code->id == MENU_CODE_PDF || code->id == MENU_CODE_C128 || code->id == MENU_CODE_QR || code->id == MENU_CODE_AZTEC)        // Check for Code-128 / PDF417 / QR / Aztec menu labels)
+            <SPAN class="c-keyword">else if</SPAN> (code.id == MENU_CODE_PDF || code.id == MENU_CODE_C128 || code.id == MENU_CODE_QR || code.id == MENU_CODE_AZTEC)        // Check for Code-128 / PDF417 / QR / Aztec menu labels)
             {
-                <SPAN class="c-keyword">switch</SPAN> ((result = ExecuteMenuLabel(code)))
+                <SPAN class="c-keyword">switch</SPAN> ((result = ExecuteMenuLabel(&code)))
                 {
                     <SPAN class="c-keyword">case</SPAN> INVALID_OPTION_READ:
                         <A class="clib" href="./Sound.html">Sound</A>(TLONG, VHIGH, SLOW, 0);

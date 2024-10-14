@@ -115,7 +115,7 @@ on how they conform or deviate from the ANSI standard.
 	<TR>
 	<TH>lib_legacy.h</TH>
 		<TD>
-			This files is used for backwards compatibility, using lower case function names. 
+			This file is included in lib.h for backwards compatibility, using lower case function names. 
 		</TD>
 	</TR>
 </TABLE>
@@ -287,20 +287,28 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Sets the level of the RING line (Only works with USB Serial ports)</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./PutBuffer.html">PutBuffer</A></TD>
-						<TD>Ttransmits a byte buffer through the communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+						<TD><LI><A HREF="./PutString.html">PutString</A></TD>
+						<TD>Transmits a null terminated string through the communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+					</TR>
+					<TR>
+						<TD><LI><A HREF="./PutString2.html">PutString2</A></TD>
+						<TD>Transmits a null terminated string through the specified communications port</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./PutnString.html">PutnString</A></TD>
 						<TD>Transmits <I>n</I> characters of a character buffer through the communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./PutString.html">PutString</A></TD>
-						<TD>Transmits a character buffer through the communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A></TD>
+						<TD><LI><A HREF="./PutnString2.html">PutnString2</A></TD>
+						<TD>Transmits a <I>n</I> byte/char buffer of the specified length through the specified communications port</TD>
+					</TR>
+					<TR>
+						<TD><LI><A HREF="./UsbIsConnected.html">UsbIsConnected</A></TD>
+						<TD>Returns the USB connection state (boolean)</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./UsbStatus.html">UsbStatus</A></TD>
-						<TD>Returns the current state of the USB connection</TD>
+						<TD>Returns the USB connection state (enum)</TD>
 					</TR>
 				</TABLE>
 			</TH>
@@ -312,7 +320,7 @@ on how they conform or deviate from the ANSI standard.
 				<TABLE CLASS="para" ID="number6" width=100%>
 					<TR>
 						<TD width=25%><LI><A HREF="./BltIsConnected.html">BltIsConnected</A></TD>
-						<TD>Checks if there is an active Bluetooth connection</TD>
+						<TD>Returns the Bluetooth connection state</TD>
 					</TR>
 					<TR>
 						<TD><LI><A HREF="./GetBltAddress.html">GetBltAddress</A></TD>
@@ -347,7 +355,7 @@ on how they conform or deviate from the ANSI standard.
 						<TD>Sets the auto-power-down settings</TD>
 					</TR>
 					<TR>
-						<TD><LI><A HREF="./Battery_GetVoltage.html">Battery_GetVoltage</A></TD>
+						<TD><LI><A HREF="./GetBatteryVoltage.html">GetBatteryVoltage</A></TD>
 						<TD>Returns the output voltage level of the battery in mVolts</TD>
 					</TR>
 					<TR>

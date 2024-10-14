@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>GetTerminalID</TITLE>
+<TITLE>GetTerminalId</TITLE>
 </HEAD>
 
 <BODY>
-<H1>GetTerminalID</H1>
+<H1>GetTerminalId</H1>
 
 <TABLE width=100% class=setup>
 	<TR class=setup>
@@ -18,12 +18,12 @@
 		<TD class=itemdescr>
 			This function returns the number that is set in the system menu, under the
 			"Set Terminal ID" option. It is also possible to use the function
-			<A class=clib HREF="./SetTerminalID.html">SetTerminalID()</A> to change the value of the terminal ID.
+			<A class=clib HREF="./SetTerminalId.html">SetTerminalId()</A> to change the value of the terminal ID.
 		</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>unsigned int</SPAN> <A class=clib HREF="./GetTerminalID.html">GetTerminalID</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>unsigned int</SPAN> <A class=clib HREF="./GetTerminalId.html">GetTerminalId</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
@@ -46,9 +46,9 @@
 
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
-    <A class=clib HREF="./SetTerminalID.html">SetTerminalID</A>( 1234 );
+    <A class=clib HREF="./SetTerminalId.html">SetTerminalId</A>( 1234 );
 
-    printf("\nterminal ID\n%d", <A class=clib HREF="./GetTerminalID.html">GetTerminalID</A>() );
+    printf("\nterminal ID\n%d", <A class=clib HREF="./GetTerminalId.html">GetTerminalId</A>() );
 
     <SPAN class=c-keyword>for</SPAN>(;;)
         <A class=clib HREF="./Idle.html">Idle</A>();

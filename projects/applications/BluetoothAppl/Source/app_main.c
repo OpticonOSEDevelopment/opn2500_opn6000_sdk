@@ -287,7 +287,7 @@ const OPTION blt_menu_option_table[] =
 	{ "PD07",(void*)&(app.trigger_to_disconnect_time),	0xFF,                                   0x07                        },
 	{ "PD08",(void*)&(app.trigger_to_disconnect_time),	0xFF,                                   0x08                        },
 	{ "PD09",(void*)&(app.trigger_to_disconnect_time),	0xFF,                                   0x09                        },
-	{ "UNPR",(void*)BltDeletePairs,						0xFF,                                   0xFF                        },
+	{ "UNPR",(void*)BltUnpair,							0xFF,                                   0xFF                        },
 	{ "BQN", (void*)&(app.options),						0x00,                                   ENABLE_KEYBOARD_TOGGLE|ENABLE_WAKEUP_KEY },
 	{ "BQF", (void*)&(app.options),						ENABLE_KEYBOARD_TOGGLE|ENABLE_WAKEUP_KEY,0x00                       },
 	{ "DELE",(void*)DeleteKeyEnabled,					0xFF,                                   0xFF                        },
@@ -555,7 +555,7 @@ void DisableBuzzer(void)
 void ReportBatteryLevel(void)
 {
 	static char batt_level[6] = {'\0'};
-	int percentage = Battery_GetPercentage();
+	int percentage = GetBatteryLevel();
 	sprintf(batt_level, "%d%%", percentage );
 	PutString(batt_level);
 }
@@ -1045,7 +1045,7 @@ void ProcessMenuLabels(int res)
 
 		case UNPAIR_LABEL:
 
-			BltDeletePairs();	// This also closes the comport
+			BltUnpair();	// This also closes the comport
 
 			Sound_App(TSTANDARD, VSYSTEM, SHIGH, SMEDIUM, SHIGH,0);
 
@@ -1223,12 +1223,7 @@ void DoGoodRead( int quantity, uint8_t memorizing )
 //------------------------------------------------------------------
 //  main
 //  =====================
-//  Main function of this demo that allows the OPN200x to read
-//  barcodes and transmit them using the mini USB cable to a virtual
-//  comport on a PC or laptop. This application also support the
-//  reading of the univeral menu-book. Since all changed
-//  configurations are stored in flash, the changed configurations
-//  are restored after a restart even if the battery has been empty.
+//  Main function of this application
 //------------------------------------------------------------------
 #ifdef ALLINONE_APP
 void blt_main(void)

@@ -5,7 +5,7 @@
     <ProgramSection alignment="0x100" load="Yes" name=".vectors" start="$(FLASH_START)" />
 	<ProgramSection alignment="4" keep="Yes" load="Yes" name=".os_preamble" start="$(FLASH_START)+0x200" size="0x04" />
 	<ProgramSection alignment="4" keep="Yes" load="Yes" name=".os_version" start="$(FLASH_START)+0x204" size="0x0C" />
-	<ProgramSection alignment="4" keep="Yes" load="Yes" name=".app_version" size="0x10" />
+	<ProgramSection alignment="4" keep="Yes" load="Yes" name=".app_version" size="0x20" />
     <ProgramSection alignment="4" load="Yes" name=".init" />
     <ProgramSection alignment="4" load="Yes" name=".init_rodata" />
     <ProgramSection alignment="4" load="Yes" name=".text" />

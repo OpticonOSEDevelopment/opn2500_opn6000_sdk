@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include "lib.h"
 
-#define VERSION    "DEMO1.0"
-
 unsigned char buzzer_enabled;
 
 // Customized default
@@ -13,13 +11,6 @@ void Custom_Default(void)
     SystemSetting("A0");            // Enable all decoders
     buzzer_enabled = TRUE;
     SystemSetting("YC");            // Enable menu labels
-}
-
-// Output OS, bootloader and application version
-void Version_Output(void)
-{
-    SystemSetting("Z1");            // Inherit OS menu option "Z1"
-    printf("%s\r", VERSION);
 }
 
 //
@@ -33,7 +24,6 @@ const OPTION menu_option_table[] =
     { "U2",(void*)Custom_Default,                   0xFF,                                   0xFF                        },
     { "W0",(void*)&(buzzer_enabled),                0x01,                                   0x00                        },
     { "W8",(void*)&(buzzer_enabled),                0x00,                                   0x01                        },
-    { "Z1",(void*)Version_Output,                   0xFF,                                   0xFF                        },
 };
 
 #define MAX_OPTIONS sizeof(menu_option_table)/sizeof(OPTION)

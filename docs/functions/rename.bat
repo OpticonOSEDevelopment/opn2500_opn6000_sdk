@@ -16,7 +16,7 @@ rename GetDate.html GetDate.html
 rename getdatetime.html GetDateTime.html
 rename GetDSR.html GetDSR.html
 rename GetOsVersion.html GetOSVersion.html
-rename GetTerminalID.html GetTerminalID.html
+rename GetTerminalId.html GetTerminalId.html
 rename gettime.html GetTime.html
 rename goodreadled.html GoodReadLed.html
 rename idle.html Idle.html
@@ -38,7 +38,7 @@ rename setdate.html SetDate.html
 rename setdatetime.html SetDateTime.html
 rename SetDTR.html SetDTR.html
 rename SetRTS.html SetRTS.html
-rename setterminalid.html SetTerminalID.html
+rename setterminalid.html SetTerminalId.html
 rename settime.html SetTime.html
 rename sound.html Sound.html
 rename starttimer.html StartTimer.html

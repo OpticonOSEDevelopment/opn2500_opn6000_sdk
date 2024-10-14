@@ -13,7 +13,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <ctype.h>
 #include <stdio.h>
 
 #include "lib_legacy.h"		// Use Lower-case functions (deprecated)
@@ -537,7 +536,11 @@ int GetStoredCmds(char* cmd_string);
 /*
  * returns remaning battery capacity in %.
  */
-unsigned int GetBatteryLevel(void);
+int GetBatteryVoltage(void);
+int GetBatteryLevel(void);
+int GetBatteryCapacity(void);
+int GetBatteryCurrent(void);
+int GetBatteryTemperature(void);
 
 int IsBatteryLow(void);
 
@@ -899,7 +902,9 @@ int ClearKeyAsTrigger(int enabled);
 char *GetBootVersion(void);
 char *GetOsVersion(void);
 char *GetApplVersion(void);
-void VersionOs(char os[10]);
+void VersionOs(char os[10]); // legacy
+unsigned int GetTerminalId(void);
+void SetTerminalId(unsigned int id);
 
 /** @brief Sound an beep which is associated with a good read (as configured with menu options)
  *
@@ -955,7 +960,7 @@ void KeyBeep(void);
 char *GetSerialNumber_str(void);
 long GetSerialNumber(void);
 
-unsigned long coreleft(void);			// Returns memory left on the file system
+unsigned long CoreLeft(void);			// Returns memory left on the file system
 unsigned long Heap_CoreLeft(void);		// Returns memory left on Heap
 
 /** @brief Open the selected communication port
@@ -1048,17 +1053,6 @@ int PutAck2(int port);
 int PutNak(void);
 int PutNak2(int port);
 int PutAckNak(int port, uint8_t ack_nak);
-
-/** @brief Transmits a buffer with defined length via the currently active port.
- *
- *  @param[in] buffer       Data to send.
- *  @param[in] length       Length of the string.
- *
- *  @retval OK(0)           Successfully transmitted the data.
- *  @retval ERROR(-1)       Failed to transmitted the data.
- */
-int PutBuffer(unsigned short port,const unsigned char *data,unsigned short len);
-
 
 /** @brief Sets the level of the DTR line.
  *
@@ -1187,7 +1181,7 @@ uint16_t GetOpcServiceId(void);
 void SetBltSppServiceUUIDs(const uint8_t *service_uuid, const uint8_t *tx_char_uuid, const uint8_t *rx_char_uuid);
 
 int BltIsConnected(void);
-void BltDeletePairs(void);
+void BltUnpair(void);
 int BltGetRssi(void);
 unsigned char GetBltConnectableTime(void);		// Conntectable time in seconds
 unsigned char GetBltAutoReconnectTime(void);	// Reonntectable time in seconds
@@ -1199,7 +1193,8 @@ void SetBltAuthMode(int bt_options);
 #define BT_AUTH_ENABLE          0x02
 
 // Defines for OseComm()
-#define CRADLE_ABORT			0x0100
+#define CONNECTION_ABORT		0x0100
+#define CRADLE_ABORT			CONNECTION_ABORT
 #define ANY_KEYS_ABORT			0x0200
 
 // Return values for OseComm()

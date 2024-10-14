@@ -16,7 +16,7 @@
 
 	<TR class=setup>
 		<TD class=item>Description</TD>
-		<TD class=itemdescr>For Bluetooth®-enabled models, remove all of the Bluetooth® pairings.</TD>
+		<TD class=itemdescr>Removes all of the Bluetooth pairings.</TD>
 	</TR>
 
 	<TR class=setup>
@@ -38,7 +38,24 @@
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>This function removes all paired (bonded) devices and their link keys from flash memory.</TD>
 	</TR>
+	<TR class=setup>
+		<TD class=item>Example</TD>
+		<TD class=itemdescr>
+<PRE>
+<SPAN class=c-preprocessor>#include</SPAN> &#60stdio.h&#62
+<SPAN class=c-preprocessor>#include</SPAN> "lib.h"
 
+<SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
+{
+    <A class=clib HREF="./Sound.html">BltUnpair</A>();
+    <SPAN class=c-keyword>for</SPAN>(;;)
+    {
+        <A class=clib HREF="./Idle.html">Idle</A>();
+    }
+}
+</PRE>
+		</TD>
+	</TR>
 </TABLE>
 </BODY>
 </HTML>

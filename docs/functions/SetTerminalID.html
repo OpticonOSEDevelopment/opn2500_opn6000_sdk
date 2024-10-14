@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>SetTerminalID</TITLE>
+<TITLE>SetTerminalId</TITLE>
 </HEAD>
 
 <BODY>
-<H1>SetTerminalID</H1>
+<H1>SetTerminalId</H1>
 
 <TABLE width=100% class=setup>
 	<TR class=setup>
@@ -16,14 +16,14 @@
 	<TR class=setup>
 		<TD class=item>Description</TD>
 		<TD class=itemdescr>
-			SetTerminalID sets the ID of the terminal. This can also be done in the system menu,
+			SetTerminalId sets the ID of the terminal. This can also be done in the system menu,
 			but this function can be used to set the ID in the application. The ID can be read with
-			the function <A class=clib HREF="./GetTerminalID.html">GetTerminalID</A>().
+			the function <A class=clib HREF="./GetTerminalId.html">GetTerminalId</A>().
 		</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
-		<TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./SetTerminalID.html">SetTerminalID</A>( <SPAN class=c-keyword>unsigned int</SPAN> id );</TD>
+		<TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./SetTerminalId.html">SetTerminalId</A>( <SPAN class=c-keyword>unsigned int</SPAN> id );</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
@@ -39,7 +39,7 @@
 	<TR class=setup>
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>
-			To read the terminal ID, use the function <A class=clib HREF="./GetTerminalID.html">GetTerminalID</A>().
+			To read the terminal ID, use the function <A class=clib HREF="./GetTerminalId.html">GetTerminalId</A>().
 			Passing a value of 10000 or larger will result in undefined behavior.<BR>
 			<BR>
 			Note that the terminal ID does not necessarily correspond to the term_id argument in <A class=clib HREF="./neto_receive.html">neto_receive</A>() and <A class=clib HREF="./neto_transmit.html">neto_transmit</A>().
@@ -57,9 +57,9 @@
 
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
-    <A class=clib HREF="./SetTerminalID.html">SetTerminalID</A>( 1234 );
+    <A class=clib HREF="./SetTerminalId.html">SetTerminalId</A>( 1234 );
 
-    printf("\nterminal ID\n%d", <A class=clib HREF="./GetTerminalID.html">GetTerminalID</A>() );
+    printf("\nterminal ID\n%d", <A class=clib HREF="./GetTerminalId.html">GetTerminalId</A>() );
 
     <SPAN class=c-keyword>for</SPAN>(;;)
         <A class=clib HREF="./Idle.html">Idle</A>();

@@ -73,6 +73,7 @@
 #define setDTR						SetDTR				// void setDTR(int on_off);
 #define getCTS						GetCTS				// int getCTS(void);
 #define getDSR						GetDSR				// int getDSR(void);
+#define PutBuffer                   PutnString2         // int PutBuffer(unsigned short port,const char *data, unsigned short len);
 
 // Power management functions
 #define idle						Idle				// void idle(void);
@@ -96,7 +97,7 @@
 #define blt_is_connected			BltIsConnected			// int blt_is_connected( void );
 #define blt_unpair					BltDeletePairs			// void blt_unpair(void);
 
-#define GetBatteryVoltage_mV		Battery_GetVoltage
+#define GetBatteryVoltage_mV		GetBatteryVoltage
 #define System_SetShutdownCallback	Application_ShutdownCallback
 
 #define SetBltPin					// Bluetooth LE doesn't support PIN

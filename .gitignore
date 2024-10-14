@@ -1,2 +1,6 @@
-projects/applications/Examples/OPN_Examples.emSession
-projects/applications/HelloWorld/HelloWorld.emSession
+*.emSession
+projects/applications/BluetoothAppl/Projects/ses/Output
+projects/applications/BatchApplication/Projects/ses/Output
+projects/applications/HelloWorld/Output
+projects/applications/Examples/Output
+docs/functions/rename.bat

@@ -102,15 +102,10 @@
 
     <SPAN class="c-keyword">for</SPAN>(;;)
     {
-        <span class="c-keyword">if</span>(!connected && <A class=clib HREF="./UsbIsConnected.html">UsbIsConnected</A>())
+        <span class="c-keyword">if</span>(connected != <A class=clib HREF="./UsbIsConnected.html">UsbIsConnected</A>())
         {
             <A class=clib HREF="./Sound.html">Sound</A>(TLONG, VHIGH, SHIGH, 0);
-            connected = TRUE;
-        }
-        <span class="c-keyword">else if</span>(connected && !<A class=clib HREF="./UsbIsConnected.html">UsbIsConnected</A>())
-        {
-            <A class=clib HREF="./Sound.html">Sound</A>(TLONG, VHIGH, SLOW, 0);
-            connected = FALSE;
+            connected = <A class=clib HREF="./UsbIsConnected.html">UsbIsConnected</A>();
         }
         
         <span class="c-keyword">if</span>((ch=getchar()) == TRIGGER_KEY && !open)

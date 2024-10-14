@@ -68,15 +68,15 @@
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
     <SPAN class=c-keyword>struct</SPAN> date d = { .da_day = 3, .da_mon = 11, .da_year = 2028 };
-    <SPAN class=c-keyword>struct</SPAN> time t = { .ti_hour = 8, .ti_min = 9, .ti_sec = 42; };
+    <SPAN class=c-keyword>struct</SPAN> time t = { .ti_hour = 8, .ti_min = 9, .ti_sec = 42 };
 
-    <A class=clib HREF="./SetDate.html">SetDate</A>( &#38d );
-    <A class=clib HREF="./SetTime.html">SetTime</A>( &#38t );
+    <A class=clib HREF="./SetDate.html">SetDate</A>( &d );
+    <A class=clib HREF="./SetTime.html">SetTime</A>( &t );
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <A class=clib HREF="./GetDate.html">GetDate</A>( &#38d );
-        <A class=clib HREF="./GetTime.html">GetTime</A>( &#38t );
+        <A class=clib HREF="./GetDate.html">GetDate</A>( &d );
+        <A class=clib HREF="./GetTime.html">GetTime</A>( &t );
         printf("\n%02d:%02d:%02d", t.ti_hour, t.ti_min, t.ti_sec);
         printf(" %02d/%02d/%04d", d.da_day, d.da_mon, d.da_year);
         <A class=clib HREF="./Delay.html">Delay</A>( 50 );

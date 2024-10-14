@@ -51,13 +51,13 @@
       build_output_file_name="$(OutDir)/$(BOARD)_$(OS_VARIANT)$(OS_VERSION)_$(APP_VARIANT)$(APP_VERSION)$(EXE)"
       c_preprocessor_definitions="FLOAT_ABI_HARD;INITIALIZE_USER_SECTIONS;NO_VTOR_CONFIG;NRF_SD_BLE_API_VERSION=7;S113;SOFTDEVICE_PRESENT"
       c_user_include_directories="../../../../../SDK/toolchain/cmsis;../../../../../SDK/mdk;../../../../../SDK/softdevice/common;../../../../../SDK/softdevice/s113/headers;../../../../../SDK/softdevice/s113/headers/nrf52;../../../../../SDK/include;../../../../../SDK/include/FileSystem;../../Source;../../Source/Include"
-      debug_initial_breakpoint="app_main"
-      debug_startup_completion_point="app_main"
       debug_additional_load_file1="../../../../../SDK/softdevice/s113/hex/s113_nrf52_7.3.0_softdevice.hex"
       debug_additional_load_file2="../../../../../SDK/firmware/bootloader/$(BOOTLOADER_VARIANT)$(BOOTLOADER_VERSION).hex"
       debug_additional_load_file3="$(OutDir)/$(BOARD)_$(BOOTLOADER_VARIANT)$(BOOTLOADER_VERSION)_$(OS_VARIANT)$(OS_VERSION)_$(APP_VARIANT)$(APP_VERSION)_settings.hex"
+      debug_initial_breakpoint="app_main"
       debug_register_definition_file="../../../../../modules/nrfx/mdk/nrf52840.svd"
       debug_start_from_entry_point_symbol="No"
+      debug_startup_completion_point="app_main"
       debug_target_connection="J-Link"
       gcc_debugging_level="Level 3"
       gcc_entry_point="Reset_Handler"
@@ -67,11 +67,9 @@
       linker_printf_width_precision_supported="Yes"
       linker_scanf_fmt_level="long"
       linker_section_placement_file="flash_placement.xml"
-      macros="OS_VERSION=V0127o;BOOTLOADER_VERSION=V0030;APP_VERSION=37930;CPU=nRF52840"
+      macros="OS_VERSION=V0127p;BOOTLOADER_VERSION=V0030;APP_VERSION=37930;CPU=nRF52840"
       post_build_command="$(ProjectDir)/postbuild.bat $(BOARD) $(OS_VARIANT)$(OS_VERSION) $(APP_VARIANT)$(APP_VERSION) $(BOOTLOADER_VARIANT)$(BOOTLOADER_VERSION) $(CPU)"
       post_build_command_wd="$(ProjectDir)/$(OutDir)"
-      pre_build_command="$(ProjectDir)/prebuild.bat $(BOARD)"
-      pre_build_command_wd="$(ProjectDir)"
       project_directory=""
       project_type="Executable" />
     <folder Name="Applications">
@@ -81,7 +79,6 @@
         </folder>
         <file file_name="../../Source/batch_main.c" />
         <file file_name="../../Source/menu_options.inc" />
-        <file file_name="../../Source/version.c" />
       </folder>
       <folder Name="Snippets">
         <folder Name="Include">
@@ -141,6 +138,9 @@
         <file file_name="../../../../../SDK/include/nrf_section.h" />
         <file file_name="../../../../../SDK/include/nrf_section_iter.h" />
         <file file_name="../../../../../SDK/softdevice/common/nrf_sections.c" />
+      </folder>
+      <folder Name="Source">
+        <file file_name="../../../../../source/version.c" />
       </folder>
     </folder>
   </project>
