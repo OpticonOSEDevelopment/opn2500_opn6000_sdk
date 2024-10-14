@@ -239,7 +239,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define SCAN_SUSPEND             16
 #define SCAN_RESUME              32
 
-/* Auto Power Down*/
+/* AutoPowerDown*/
 #define APD_OFF             0       //!< Turn Auto Power Down Off
 #define APD_ON              1       //!< Turn Auto Power Down On
 #define APD_RESET           3       //!< Reset Auto Power Down timer.
@@ -281,7 +281,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define VIBRATE_TOGGLE      0x4000000
 
 /*
- * definitions for sound volume level
+ * definitions for Sound volume level
  */
 #define VOFF                0    //!< Sets sound volume off.
 #define VVLOW               10    //!< Sets sound volume very low.
@@ -292,7 +292,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define VSYSTEM             0xFE  //!< Sets sound volume the System volume set by Menu-labels & Systemsetting()
 
  /*
- * definitions for sound tone duration
+ * definitions for Sound tone duration
  */
 #define TCLICK              1   //!< Sets duration to one click.
 #define TSHORT              3   //!< Sets duration to short buzz.
@@ -302,7 +302,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define ARG_POINTER         0x80
 
 /*
- * definitions for sound tone
+ * definitions for Sound tone
  */
 #define SPAUSE              0x7FFF  //!< Pause of 100 msec.
 #define REPEAT              0xFFFE  //!< Repeat previous.
@@ -315,7 +315,7 @@ typedef int  (*ret_func_ptr_arg)(int argument);
 #define SMEDIUM             2489   //!< Medium sound.
 #define SHIGH               3520   //!< High sound.
 
-/* ischarging */
+/* Ischarging */
 #define NOT_CONNECTED       0       //!< Not connect USB cable(VBUS).
 #define CHARGING            1       //!< Charging
 #define CHARGING_FULL       2       //!< Charge completed
@@ -395,13 +395,9 @@ typedef enum
 #define IsUsbCdcPort(x)		(x == COM1 || x == COM7 || x == COM8)
 #define IsUsbVcpPort(x)		(x == COM0 || x == COM9)
 #define IsUsbHidPort(x)		(x == COM10)
-
-#ifdef HAS_BLUETOOTH
 #define IsBluetoothPort(x)		(x == COM12 || x == COM13 || x == COM14 || x == COM15 || x == COM16 || x == COM17 || x == COM18  || x == COM19)
 #define IsBluetoothSerialPort(x)(x == COM14 || x == COM15 || x == COM16 || x == COM17 || x == COM18 || x == COM19)
 #define IsBluetoothHidPort(x)	(x == COM12 || x == COM13)
-#endif
-
 #define IsOptiConnectPort(x)	(x == COM7 || x == COM16 || x == COM17)
 #define IsBleSppPort(x)			(x == COM14 || x == COM15 || x == COM18 || x == COM19)
 
@@ -534,16 +530,30 @@ int ExecuteMenuLabel(struct barcode *code);
 int GetStoredCmds(char* cmd_string);
 
 /*
- * returns remaning battery capacity in %.
+ * Battery functions
  */
+
+/** @brief Returns if the battery voltage in mV */
 int GetBatteryVoltage(void);
+
+/** @brief Returns if the battery percentage (0...100) */
 int GetBatteryLevel(void);
+
+/** @brief Returns if the battery capacity in mAh */
 int GetBatteryCapacity(void);
+
+/** @brief Returns if the charging current in mA */
 int GetBatteryCurrent(void);
+
+/** @brief Returns if the battery temperature in C */
 int GetBatteryTemperature(void);
 
+/** @brief Returns if the battery is nearly depleted.
+ *
+ * @retval TRUE     Battery is low
+ * @retval FALSE    Battery is not low.
+ */
 int IsBatteryLow(void);
-
 
 /** @brief This will set the date and the time which will be stored in the RTC. It will also check the time if it is possible.
  *
@@ -686,32 +696,6 @@ void Idle(void);
  */
 int IsCharging(void);
 
-
-/** @brief Returns the temperature.
- *  @todo Not correctly implemented.
- *
- *  @retval unsigned int Current temperature in degrees
- */
-int Battery_GetTemperature(void);
-
-/** @brief Returns the main battery voltage in mVolts
- *
- *  @retval unsigned int mVolts of battery
- */
-int Battery_GetVoltage(void);
-
-int Battery_GetCurrent(void);
-int Battery_GetPercentage(void);
-int Battery_GetCapacity(void);
-
-
-/** @brief Returns if the battery is nearly depleted.
- *
- * @retval TRUE     Battery is low
- * @retval FALSE    Battery is not low.
- */
-int IsBatteryLow(void);
-
 // Timer functions
 
 /** @brief This function starts the time-out timer.
@@ -764,7 +748,7 @@ unsigned int GetTickCount(void);
  */
 void SetTickCount(unsigned int value);
 
-/** @brief Simple delay function using the heartbeat if available.
+/** @brief Delay function in 20ms steps (includes power saving)
  *
  *  @param[in] time The delay time in 20ms steps.
  *
@@ -772,11 +756,16 @@ void SetTickCount(unsigned int value);
  */
 void Delay(int time);
 
-/** @brief Delays execution for ~timeUs miliseconds.
+/** @brief Delays execution for n miliseconds (software loop)
  *
  * @return void
  */
 void SoftwareDelayMs(unsigned short ms);
+
+/** @brief Delays execution for n miliseconds (includes power saving)
+ *
+ * @return void
+ */
 void DelayMs(unsigned short ms);
 
 /** @brief Controls the red, green and blue LED's

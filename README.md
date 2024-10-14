@@ -28,12 +28,12 @@ This SDK contains the following components:
 ## /firmware
 
 - **/bootloader**
-  - `FAMVxxxx.HEX` -> Bootloader of the OPN6000
-  - `FANVxxxx.HEX` -> Bootloader of the OPN2500
+  - `FAMVxxxx.HEX` -> Bootloader of the OPN-6000
+  - `FANVxxxx.HEX` -> Bootloader of the OPN-2500
 
 - **/library**
-  - `OPN2500_FBNVxxxx.a` -> OPN2500 Operating System library file
-  - `OPN6000_FBMVxxxx.a` -> OPN6000 Operating System library file
+  - `OPN2500_FBNVxxxx.a` -> OPN-2500 Operating System library file
+  - `OPN6000_FBMVxxxx.a` -> OPN-6000 Operating System library file
 
 ## /include
 
@@ -69,7 +69,7 @@ This SDK contains the following components:
 
 # Applications
 
-In the folder `Projects/Applications`, 2 applications can be found that are installed on the OPN2500 / OPN6000 by default. They provide a good starting point when only small customizations are required:
+In the folder `Projects/Applications`, 2 applications can be found that are installed on the OPN-2500 / OPN-6000 by default. They provide a good starting point when only small customizations are required:
 
 ## BatchApplication
     -> Batch application to demonstrate using the OPN as batch device and communication using USB-MSD and OseComm
@@ -157,7 +157,7 @@ When porting applications of the OPN-200x, PX-20 and RS-3000 please note the fol
   - **BQZ**: Switch to USB-CDC (OPN2001 mode)
   - **U2**: OPN-2001 default
 
-## Removed / Missing Features from OPN6000
+## Removed / Missing Features from OPN-6000
 
 - **Bluetooth Classic (HID/SPP) is not supported**
 - **Scanning of Bluetooth address labels to connect is removed** (BLE is always slave)

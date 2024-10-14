@@ -661,7 +661,7 @@ IMG.hide
 
 /* Style for the top bar */
 .top-bar {
-    background-color: #003D66; /* Blue color */
+    background-color: #f4f4f4; /* Blue color */
     padding: px 5px;
     display: flex;
     align-items: center; /* Vertically centers the content */

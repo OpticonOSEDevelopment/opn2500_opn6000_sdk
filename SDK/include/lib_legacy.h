@@ -2,7 +2,7 @@
  *
  *  Copyright (C) Opticon Sensors Europe B.V.
  *
- *  lib_legacy.h For OPN2500 / OPN6000
+ *  lib_legacy.h For OPN-2500 / OPN-6000
  *
  ***********************************************************************/
 
