@@ -88,7 +88,7 @@
 
 #define tell						ftell					// long tell(int handle);
 #define	lseek						fseek					// long lseek(int handle, long offset, int orgin);
-
+#define coreleft 					CoreLeft				// unsigned long coreleft(void);	
 #define far_malloc 					malloc					// void *far_malloc (unsigned long nbytes);
 
 #define putstring					PutString				// int putstring(char *data);

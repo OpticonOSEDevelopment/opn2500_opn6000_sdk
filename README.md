@@ -43,6 +43,9 @@ This SDK contains the following components:
 - `/FileSystem` -> Header files for the [ChaN's FatFs Generic file system](http://elm-chan.org/fsw/ff/FileSystem) 
 - `(other OS related header files)`
 
+## /source
+- `version.c` -> Places the version of the application at a fixed location in memory, so it can be retrieved in Appload
+
 ## /mdk
 
 - `OPN2500` / `OPN6000` / `nRF528xx` specific header files
