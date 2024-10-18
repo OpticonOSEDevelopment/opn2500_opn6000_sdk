@@ -127,7 +127,7 @@
         {
              <A class="clib" href="./GoodReadLed.html">GoodReadLed</A>(GREEN, 10);
              <A class="clib" href="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-             printf(&quot;%s\n&quot;,code.text);
+             printf(&quot;%*s\r&quot;, code.length, code.text);
         }
 
         <A class="clib" HREF="./Idle.html">Idle</A>();

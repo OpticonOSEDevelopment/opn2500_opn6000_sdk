@@ -28,7 +28,7 @@ void main( void )
             GoodReadLed(GREEN, 10);
             Sound(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
             Vibrate(TSTANDARD);
-            printf("%s\n",code.text);
+            printf("%*s\n", code.length, code.text);
         }
         Idle();
     }

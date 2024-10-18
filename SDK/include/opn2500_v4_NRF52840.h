@@ -45,7 +45,7 @@ extern "C" {
 #endif
 
 #define OPN2500
-#define MODEL_NAME			"OPN-2500"
+#define MODEL_NAME			"OPN2500"
 #define BATTERY_CAPACITY	250		// mAh
 
 #define HAS_SHUTDOWN

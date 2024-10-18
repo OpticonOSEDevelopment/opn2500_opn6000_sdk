@@ -134,7 +134,7 @@ application_vars app;     <SPAN class="c-comment">// Structure in which all conf
             <SPAN class="c-keyword">else</SPAN>
             {
                 save = FALSE;
-                printf("%s\r",code.text);	<SPAN class="c-comment">// No configuration barcode, so output the barcode by USB or Cradle</SPAN>
+                printf("%*s\r", code.length, code.text);    <SPAN class="c-comment">// No configuration barcode, so output the barcode by USB or Cradle</SPAN>
             }
 
             <SPAN class="c-keyword">if</SPAN>(save)

@@ -94,7 +94,7 @@
                 <A class="clib" href="../functions/GoodReadLed.html">GoodReadLed</A>(ORANGE, 10);
 
             <A class="clib" href="../functions/Sound.html">Sound</A>( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-            printf(&quot;%s\n&quot;,code.text);
+            printf(&quot;%*s\r&quot;, code.length, code.text);
         }
 
         <A class="clib" href="../functions/Idle.html">Idle</A>();

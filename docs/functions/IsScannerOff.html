@@ -75,7 +75,7 @@
                 <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>( GREEN, 10);
                 <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
                 <A class=clib HREF="./ScannerPower.html">ScannerPower</A>( ON, 250);
-                printf("%s", code.text);
+                printf("%*s\r", code.length, code.text);
             }
         }
         <SPAN class=c-keyword>else</SPAN>

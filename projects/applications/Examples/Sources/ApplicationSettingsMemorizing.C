@@ -56,7 +56,7 @@ void main( void )
             else
             {
                 save = FALSE;
-                printf("%s\r",code.text);	// No configuration barcode, so output the barcode by USB or Cradle
+                printf("%*s\r", code.length, code.text);	// No configuration barcode, so output the barcode by USB or Cradle
             }
 
             if(save)

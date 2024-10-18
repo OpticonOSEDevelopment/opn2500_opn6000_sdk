@@ -69,7 +69,7 @@
     <span class="c-keyword">for</span>(;;)
     {
         d.da_day = 29; <span class="c-comment">// only leap years have 29 days in February</span>
-        printf(&quot;\fDate: %02d-%02d-%04d&quot;,d.da_day,d.da_mon,d.da_year);
+        printf(&quot;\rDate: %02d-%02d-%04d&quot;,d.da_day,d.da_mon,d.da_year);
         <span class="c-keyword">if</span>( <a class="clib" href="./CheckDate.html">CheckDate</a>( &amp;d ) == OK )
             printf(&quot;\nDate ok!!\n&quot;);
         <span class="c-keyword">else</span>
@@ -79,7 +79,7 @@
         <a class="clib" href="./ResetKey.html">ResetKey</a>();
 
         d.da_day = 28;
-        printf(&quot;\fDate: %02d-%02d-%04d&quot;,d.da_day,d.da_mon,d.da_year);
+        printf(&quot;\rDate: %02d-%02d-%04d&quot;,d.da_day,d.da_mon,d.da_year);
         <span class="c-keyword">if</span>( <a class="clib" href="./CheckDate.html">CheckDate</a>( &amp;d ) == OK )
             printf(&quot;\nDate ok!!\n&quot;);
         <span class="c-keyword">else</span>

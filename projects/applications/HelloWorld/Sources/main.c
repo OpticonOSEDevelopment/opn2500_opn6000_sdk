@@ -92,7 +92,7 @@ void main( void )
 			{
 				goodreadled(GREEN, 10);
 				sound( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-				printf("%s\r", code.text);
+				printf("%*s\r", code.length, code.text);
 			}
         }
 

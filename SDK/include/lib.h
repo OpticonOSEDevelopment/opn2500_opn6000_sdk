@@ -1166,8 +1166,8 @@ void PutLong(unsigned long l);
 void SoftReset(void);
 
 // Bluetooth function
-char *GetBltAddress(void);
-void SetBltAddress(const char *address);
+char *GetBltAddress(void);                      // Legacy: has no effect on BLE
+void SetBltAddress(const char *address);        // Legacy: has no effect on BLE
 char *GetBltLocalName( void );
 void SetBltLocalName(const char *localname );
 char *GetBltLocalAddress(void);

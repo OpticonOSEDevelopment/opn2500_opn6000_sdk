@@ -22,7 +22,7 @@ void main( void )
         {
              GoodReadLed(GREEN, 10);
              Sound( TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
-             printf("%s\n",code.text);
+             printf("%*s\r", code.length, code.text);
         }
 
         Idle();

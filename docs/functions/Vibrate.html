@@ -86,7 +86,7 @@
             <A class=clib HREF="./GoodReadLed.html">GoodReadLed</A>(GREEN, 10);
             <A class=clib HREF="./Sound.html">Sound</A>(TSTANDARD, VHIGH, SMEDIUM, SHIGH, 0);
             <A class=clib HREF="./Vibrate.html">Vibrate</A>(TSTANDARD);
-            printf("%s\n",code.text);
+            printf("%*s\r", code.length, code.text);
         }
         <A class=clib HREF="./Idle.html">Idle</A>();
     }
