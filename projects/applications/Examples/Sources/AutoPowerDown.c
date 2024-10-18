@@ -4,8 +4,6 @@
 
 void main(void)
 {
-    char *s;
-
     AutoPowerDown(ON, 1*50); // 1 second
     AutoPowerDown(APD_SHUTDOWN_ON, 20*50); // 20 seconds
 

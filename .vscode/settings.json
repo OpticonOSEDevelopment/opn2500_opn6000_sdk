@@ -28,6 +28,7 @@
         "ApplicationSettingsMemorizing.C": "cpp",
         "SystemSettingsMemorizing.C": "cpp",
         "ClearKeyAsTrigger.C": "cpp",
-        "POWEREDDOWN.C": "cpp"
+        "POWEREDDOWN.C": "cpp",
+        "Delay.C": "cpp"
     }
 }
