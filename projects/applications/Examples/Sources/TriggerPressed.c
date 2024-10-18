@@ -5,12 +5,14 @@
 #include "lib.h"
 
 void main( void )
-{
-    printf("\nPress trigger!");
+{    
     for(;;)
     {
+        printf("\nPress any key!");
         if( TriggerPressed() )
             Sound( TSTANDARD, VHIGH, SMEDIUM, 0);
+        if( DownPressed() )
+            Sound( TSTANDARD, VHIGH, SLOW, 0);
         Idle();
     }
 }

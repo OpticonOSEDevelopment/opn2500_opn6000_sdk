@@ -60,12 +60,14 @@
 <SPAN class=c-preprocessor>#include</SPAN> "lib.h"
 
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
-{
-    printf("\nPress trigger!");
+{    
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
+        printf("\nPress any key!");
         <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./TriggerPressed.html">TriggerPressed</A>() )
             <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SMEDIUM, 0);
+        <SPAN class=c-keyword>if</SPAN>( <A class=clib HREF="./DownPressed.html">DownPressed</A>() )
+            <A class=clib HREF="./Sound.html">Sound</A>( TSTANDARD, VHIGH, SLOW, 0);
         <A class=clib HREF="./Idle.html">Idle</A>();
     }
 }

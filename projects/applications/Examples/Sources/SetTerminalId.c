@@ -6,8 +6,14 @@ void main( void )
 {
     SetTerminalId( 1234 );
 
-    printf("\nterminal ID\n%d", GetTerminalId() );
-
     for(;;)
-        Idle();
+    {
+        ResetKey();
+
+        while(!kbhit())
+            Idle();
+
+        printf("\nTerminal ID: %06d", GetTerminalId());
+        Sound(TSTANDARD, VHIGH, SHIGH, 0);
+    }
 }
