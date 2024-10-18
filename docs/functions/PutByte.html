@@ -56,13 +56,7 @@
     {
         <SPAN class=c-keyword>if</SPAN>( (ch = <A class=clib HREF="./GetCom.html">GetCom</A>( 0 )) != -1)
         {
-            putchar( ch );
-            <A class=clib HREF="./PutByte.html">PutByte</A>( ch );
-        }
-
-        <SPAN class=c-keyword>if</SPAN>( (ch = getchar()) != EOF)
-        {
-            putchar( ch );
+            PutCom( ch );
             <A class=clib HREF="./PutByte.html">PutByte</A>( ch );
         }
         <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>

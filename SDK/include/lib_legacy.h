@@ -21,7 +21,7 @@
 //            Public Operating System functions
 //-------------------------------------------------------------------
 
-// Barcode / laser functions
+// Barcode / scanner functions
 #define scannerpower                ScannerPower         // void scannerpower(int mode, int time);
 #define readbarcode                 ReadBarcode          // int readbarcode(struct barcode *barcodep);
 #define scanneroff                  IsScannerOff         // int scanneroff(void);

@@ -116,7 +116,7 @@ application_vars app;     <SPAN class="c-comment">// Structure in which all conf
         <A class="clib" href="../functions/SystemSetting.html">SystemSetting</A>("Z2");                <SPAN class="c-comment">// Save settings in flash</SPAN>
     }
 
-    <A class="clib" href="../functions/ScannerPower.html">ScannerPower</A>(TRIGGER | SINGLE, 250);    <SPAN class="c-comment">// Trigger mode, 5 seconds read time, laser off after 1 barcode</SPAN>
+    <A class="clib" href="../functions/ScannerPower.html">ScannerPower</A>(TRIGGER | SINGLE, 250);    <SPAN class="c-comment">// Trigger mode, 5 seconds read time, scanner off after 1 barcode</SPAN>
     <SPAN class="c-keyword">for</SPAN>(;;)
     {
         <SPAN class="c-keyword">if</SPAN>(<A class="clib" href="../functions/ReadBarcode.html">ReadBarcode</A>(&amp;code) == OK)

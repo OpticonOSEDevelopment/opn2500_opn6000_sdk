@@ -7985,7 +7985,7 @@
         <configuration Name="SetSystemTime" build_exclude_from_build="Yes" />
         <configuration Name="SetTerminalId" build_exclude_from_build="Yes" />
         <configuration Name="SetTickCount" build_exclude_from_build="Yes" />
-        <configuration Name="SetTime" build_exclude_from_build="No" />
+        <configuration Name="SetTime" build_exclude_from_build="Yes" />
         <configuration Name="Sound" build_exclude_from_build="Yes" />
         <configuration Name="StartTimer" build_exclude_from_build="Yes" />
         <configuration Name="SystemSetting" build_exclude_from_build="Yes" />

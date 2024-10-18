@@ -485,7 +485,7 @@ struct ffblk
     int drive;
 };
 
-// Barcode / laser functions
+// Barcode / scanner functions
 void ScannerPower(int mode, int time);
 int ReadBarcode(struct barcode *barcodep);
 
@@ -652,6 +652,14 @@ void SetAlarm(struct time *timep, unsigned short onoff);
 //  else it returns OK
 //------------------------------------------------------------------
 int GetAlarm(struct date *datep, struct time *timep);
+
+//------------------------------------------------------------------
+//  IsAlarmOn
+//  =====================
+//  Returns whether an alarm has been set
+//  Note: After the alarm has occured, the function returns FALSE
+//------------------------------------------------------------------
+int IsAlarmOn(void);
 
 //------------------------------------------------------------------
 //  DateTimeToTimeStamp
@@ -977,7 +985,7 @@ int ComClose(int port);
  *  @retval OK(0)           Successfully transmitted the data.
  *  @retval ERROR(-1)       Failed to transmitted the data.
  */
-int PutCom(int data);
+int PutCom(uint8_t data);
 
 /** @brief Sends a character out via the selected port
  *
@@ -987,7 +995,7 @@ int PutCom(int data);
  *  @retval OK(0)           Successfully transmitted the data.
  *  @retval ERROR(-1)       Failed to transmitted the data.
  */
-int PutCom2(int port, int data);
+int PutCom2(int port, uint8_t data);
 
 /** @brief Receives a character from the currently active port
  *

@@ -73,12 +73,10 @@
 {
     <SPAN class=c-keyword>struct</SPAN> date d = {0};
 
-    putchar('\f');
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
         <A class=clib HREF="../../functions/GetDate.html">GetDate</A>( &d );
-        <A class=clib HREF="../../functions/gotoxy.html">gotoxy</A>( 0, 0);
-        printf("%02d-%02d-%04d  \nWeek number %d", d.da_day, d.da_mon, d.da_year, GetWeekNumber() );
+        printf("%02d-%02d-%04d\nWeek number %d\n", d.da_day, d.da_mon, d.da_year, GetWeekNumber() );
 
         <A class=clib HREF="../../functions/Delay.html">Delay</A>( 250 ); <SPAN class=c-comment>// wait 5 seconds before update</SPAN>
     }

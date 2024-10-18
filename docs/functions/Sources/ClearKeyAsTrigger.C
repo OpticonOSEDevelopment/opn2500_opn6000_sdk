@@ -17,7 +17,7 @@ void main( void )
     code.text  = bcr_buf;
 
     ClearKeyAsTrigger(TRUE);              // This function makes it possible to use the small clear key 
-                                          // as additional trigger key to enable the laser and read barcodes. 
+                                          // as additional trigger key to enable the scanner and read barcodes. 
 
     ScannerPower(SINGLE|TRIGGER, 250);    // Single read / Trigger mode / 5 seconds
 

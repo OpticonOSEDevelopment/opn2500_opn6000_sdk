@@ -3,6 +3,7 @@
 // that is executed by the operating system every 20ms.
 // The callback makes sure that the red LED is switched
 // on for a short time every 2 seconds.
+// (Press function key to uninstall)
 #include <stdio.h>
 #include "lib.h"
 
@@ -27,7 +28,7 @@ void main( void )
 
     while(1)
     {
-		if (getchar() == TRIGGER_KEY)
+		if (getchar() == CLR_KEY)
             RemoveHeartbeatHandler(Callback);
 	}
     Idle();

@@ -77,7 +77,7 @@
     code.max   = 41;
     code.text  = bcr_buf;
 
-    <A class=clib HREF="./ScannerPower.html">ScannerPower</A>(ON, 250);
+    <A class="clib" href="./ScannerPower.html">ScannerPower</A>(TRIGGER | SINGLE, 250);   <SPAN class="c-comment">// Trigger mode, 5 seconds read time, scanner off after 1 barcode</SPAN>
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {

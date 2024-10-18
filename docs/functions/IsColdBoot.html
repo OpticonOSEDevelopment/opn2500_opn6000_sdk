@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>PoweredDown</TITLE>
+<TITLE>IsColdBoot</TITLE>
 </HEAD>
 
 <BODY>
-<H1>PoweredDown</H1>
+<H1>IsColdBoot</H1>
 
 <TABLE width=100% class=setup>
     <TR class=setup>
@@ -16,12 +16,12 @@
     <TR class=setup>
         <TD class=item>Description</TD>
         <TD class=itemdescr>
-            This function is used to find out if the device has been in powered down state.<BR>A call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A> returns the state of the flag, and it will clear the flag.
+            This function is used to find out if the device has been automatically powered off or has performed a full reset (cold boot).<BR>A call to <A class=clib HREF="./IsColdBoot.html">IsColdBoot()</A> returns the state of the cold boot flag, but does not clear the flag.
         </TD>
     </TR>
     <TR class=setup>
         <TD class=item>Syntax</TD>
-        <TD class=itemdescr><SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PoweredDown.html">PoweredDown</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
+        <TD class=itemdescr><SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./IsColdBoot.html">IsColdBoot</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
     </TR>
     <TR class=setup>
         <TD class=item>Arguments</TD>
@@ -33,11 +33,11 @@
             <TABLE class=OPTIONS width=100% >
                 <TR>
                     <TD>0</TD>
-                    <TD>Device has not slept since the last call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A>.</TD>
+                    <TD>Latest start-up was the result of having been automatically powered off</A>.</TD>
                 </TR>
                 <TR>
                     <TD>1</TD>
-                    <TD>Device has slept since the last call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A>.</TD>
+                    <TD>Latest start-up was the result of a full reset (cold boot)</A>.</TD>
                 </TR>
             </TABLE>
         </TD>
@@ -46,7 +46,7 @@
         <TD class=item>Remarks</TD>
         <TD class=itemdescr>
 			A call to <A class=clib HREF="./PoweredDown.html">PoweredDown()</A> will clear the PoweredDown flag in the operating system.<BR>
-			A call to <A class=clib HREF="./IsColdBoot.html">IsColdBoot()</A> makes it possible to distinguish between a restart after an automatic powering off and a cold boot.
+			A call to <A class=clib HREF="./IsColdBoot.html">IsColdBoot()</A> will not clear the cold-boot flag.
 		</TD>
     </TR>
     <TR class=setup>

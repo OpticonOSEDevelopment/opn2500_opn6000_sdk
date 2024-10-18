@@ -4,30 +4,15 @@
 
 void main( void )
 {
-    unsigned short ch;
-    unsigned char c;
-    int counter = 0;
+    int c;
 
     ComOpen( COM9 );    // Open the COM port for USB-VCP
 
     for(;;)
     {
-        if( (c = getchar()) != EOF)
+        if( (c = GetCom(0)) >= 0)
         {
-            putchar( c );
-			
-            if (counter == 0)
-            {
-                ch = c;
-                ch <<= 8;
-                counter++;
-            }
-            else
-            {
-                ch |= c;
-                PutShort( ch );
-                counter = 0;
-            }
+            PutShort( (unsigned short)(c * 16) );
         }
         Idle();    // Very important to lower the power consumption
     }

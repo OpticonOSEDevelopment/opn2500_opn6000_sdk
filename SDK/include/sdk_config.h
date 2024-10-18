@@ -3779,7 +3779,7 @@
 // <0=> Pause in SLEEP and HALT 
 
 #ifndef NRFX_WDT_CONFIG_BEHAVIOUR
-#define NRFX_WDT_CONFIG_BEHAVIOUR 1
+#define NRFX_WDT_CONFIG_BEHAVIOUR 0
 #endif
 
 // <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value in ms  <1-131072000> 

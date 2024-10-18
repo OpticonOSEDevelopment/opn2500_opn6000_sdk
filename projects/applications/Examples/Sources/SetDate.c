@@ -2,7 +2,6 @@
 // SetDate() / SetTime() example
 
 #include <stdio.h>
-#include <ctype.h>
 #include "lib.h"
 
 void main( void )

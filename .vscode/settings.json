@@ -16,6 +16,18 @@
         "SetTerminalID.C": "cpp",
         "GetTerminalID.C": "cpp",
         "TimerValue.C": "cpp",
-        "Battery_GetVoltage.C": "cpp"
+        "Battery_GetVoltage.C": "cpp",
+        "AutoPowerDown.C": "cpp",
+        "PutByte.C": "cpp",
+        "ComClose.C": "cpp",
+        "CoreLeft.C": "cpp",
+        "GetBootVersion.C": "cpp",
+        "Heap_CoreLeft.C": "cpp",
+        "PutCom.C": "cpp",
+        "ExecuteMenuLabel.C": "cpp",
+        "ApplicationSettingsMemorizing.C": "cpp",
+        "SystemSettingsMemorizing.C": "cpp",
+        "ClearKeyAsTrigger.C": "cpp",
+        "POWEREDDOWN.C": "cpp"
     }
 }

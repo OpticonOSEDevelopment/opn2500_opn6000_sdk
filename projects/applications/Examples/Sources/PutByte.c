@@ -12,13 +12,7 @@ void main( void )
     {
         if( (ch = GetCom( 0 )) != -1)
         {
-            putchar( ch );
-            PutByte( ch );
-        }
-
-        if( (ch = getchar()) != EOF)
-        {
-            putchar( ch );
+            PutCom( ch );
             PutByte( ch );
         }
         Idle();    // Very important to lower the power consumption

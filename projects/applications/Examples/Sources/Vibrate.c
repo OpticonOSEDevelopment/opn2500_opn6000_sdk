@@ -19,7 +19,7 @@ void main( void )
     code.max   = 41;
     code.text  = bcr_buf;
 
-    ScannerPower(ON, 250);
+    ScannerPower(TRIGGER | SINGLE, 250);   // Trigger mode, 5 seconds read time, scanner off after 1 barcode
 
     for(;;)
     {

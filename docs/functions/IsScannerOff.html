@@ -26,17 +26,25 @@
 		<TD class=itemdescr>None</TD>
 	</TR>
 	<TR class=setup>
-		<TD class=item>Returns</TD>
-		<TD class=itemdescr>Zero when the scan engine is on, a non-zero positive integer when the scan engine is off.</TD>
-	</TR>
+        <TD class=item>Returns</TD>
+        <TD class=itemdescr>
+			The current state of the scan engine
+            <TABLE class=OPTIONS width=100% >
+                <TR>
+                    <TD>0</TD>
+                    <TD>Scan engine is off</A>.</TD>
+                </TR>
+                <TR>
+                    <TD>1</TD>
+                    <TD>Scan engine is on</A>.</TD>
+                </TR>
+            </TABLE>
+        </TD>
+    </TR>
 	<TR class=setup>
 		<TD class=item>Remarks</TD>
 		<TD class=itemdescr>
-			Laser terminals:<BR>
-			The scan engine is the part of the terminal that emits the laser beam and that processes variations
-			in reflected laser light. When the laser beam is visible, the scan engine is on; otherwise it is
-			off. The scan engine is controlled by the function <A class=clib HREF="./ScannerPower.html">ScannerPower()</A>.<BR><BR>
-
+			The scan engine is controlled by the function <A class=clib HREF="./ScannerPower.html">ScannerPower()</A>.<BR><BR>
 		</TD>
 	</TR>
 	<TR class=setup>

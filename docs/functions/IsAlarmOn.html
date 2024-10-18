@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>SetAlarm</TITLE>
+<TITLE>IsAlarmOn</TITLE>
 </HEAD>
 
 <BODY>
-<H1>SetAlarm</H1>
+<H1>IsAlarmOn</H1>
 
 <TABLE width=100% class=setup>
     <TR class=setup>
@@ -15,47 +15,31 @@
     </TR>
     <TR class=setup>
         <TD class=item>Description</TD>
-        <TD class=itemdescr>This function can wake up the device at a specific time.</TD>
+        <TD class=itemdescr>This function returns whether a alarm is set.</TD>
     </TR>
     <TR class=setup>
         <TD class=item>Syntax</TD>
-        <TD class=itemdescr><SPAN class=c-keyword>void</SPAN> <A class=clib HREF="./SetAlarm.html">SetAlarm</A>( <SPAN class=c-keyword>struct</SPAN> time *timep, <SPAN class=c-keyword>unsigned short</SPAN> onoff );</TD>
+        <TD class=itemdescr><SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./IsAlarmOn.html">IsAlarmOn</A>( <SPAN class=c-keyword>void</SPAN> );</TD>
     </TR>
     <TR class=setup>
-        <TD class=item>Arguments</TD>
-        <TD class=itemdescr>
-            <H5><SPAN class=c-keyword>struct</SPAN> time *<I>timep</I></H5>
-            A pointer to a time structure that defines the time when the alarm has to go off.<BR>
-            The time structure is defined as follows:
-<PRE>
-<SPAN class=c-keyword>struct</SPAN> time
-{
-    <SPAN class=c-keyword>unsigned char</SPAN> ti_hour;  <SPAN class=c-comment>// hours</SPAN>
-    <SPAN class=c-keyword>unsigned char</SPAN> ti_min;   <SPAN class=c-comment>// minutes</SPAN>
-    <SPAN class=c-keyword>unsigned char</SPAN> ti_sec;   <SPAN class=c-comment>// seconds</SPAN>
-};
-</PRE>
-
-            <H5><SPAN class=c-keyword>unsigned short</SPAN> <I>onoff</I></H5>
-            onoff is a variable that defines whether the alarm should go off at the selected time.
-            <TABLE class=OPTIONS width=100%>
-            <TR>
-                <TD>ON</TD>
-                <TD>Let the alarm function go off at the selected time.</TD>
-            </TR>
-            <TR>
-                <TD>OFF</TD>
-                <TD>Disables the <A class=clib HREF="./SetAlarm.html">SetAlarm</A> function.</TD>
-            </TR>
-            </TABLE>
-
-        </TD>
-    </TR>
-
-    <TR class=setup>
-        <TD class=item>Returns</TD>
-        <TD class=itemdescr>None</TD>
-    </TR>
+		<TD class=item>Arguments</TD>
+		<TD class=itemdescr>None</TD>
+	</TR>
+	<TR class=setup>
+		<TD class=item>Returns</TD>
+		<TD class=itemdescr>
+			<TABLE class=OPTIONS width=100%>
+				<TR>
+					<TD>0</TD>
+					<TD>The alarm is not set</TD>
+				</TR>
+				<TR>
+					<TD>1</TD>
+					<TD>The alarm is set</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
     <TR class=setup>
         <TD class=item>Remarks</TD>
         <TD>
@@ -63,7 +47,6 @@
                 <LI>After the alarm has occured, the alarm is cleared, so <A class=clib HREF="./IsAlarmOn.html">IsAlarmOn</A> returns FALSE.</LI>
                 <LI>If the alarm occurs during power off state, the alarm will boot device from power off state</LI>
                 <LI>If the alarm occurs during power down (sleep) state, the alarm will wake-up from sleep</LI>
-                <LI><A class=clib HREF="./SetAlarm.html">SetAlarm</A> does not possess resolution to seconds.  So your alarm must be set for 1 minute in the future or more.</LI>
             </LU>
         </TD>
     </TR>

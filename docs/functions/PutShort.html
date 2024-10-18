@@ -49,30 +49,15 @@
 
 <SPAN class=c-keyword>void</SPAN> main( <SPAN class=c-keyword>void</SPAN> )
 {
-    <SPAN class=c-keyword>unsigned short</SPAN> ch;
-    <SPAN class=c-keyword>unsigned char</SPAN> c;
-    <SPAN class=c-keyword>int</SPAN> counter = 0;
+    <SPAN class=c-keyword>int</SPAN> c;
 
     <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {
-        <SPAN class=c-keyword>if</SPAN>( (c = getchar()) != EOF)
+        <SPAN class=c-keyword>if</SPAN>( (c = GetCom(0)) >= 0)
         {
-            putchar( c );
-			
-            <SPAN class=c-keyword>if</SPAN> (counter == 0)
-            {
-                ch = c;
-                ch <<= 8;
-                counter++;
-            }
-            <SPAN class=c-keyword>else</SPAN>
-            {
-                ch |= c;
-                <A class=clib HREF="./PutByte.html">PutShort</A>( ch );
-                counter = 0;
-            }
+            <A class=clib HREF="./PutShort.html">PutShort</A>( (<SPAN class=c-keyword>unsigned short</SPAN>)(c * 16) );
         }
         <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>
     }

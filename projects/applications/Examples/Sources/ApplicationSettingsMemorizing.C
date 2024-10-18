@@ -38,7 +38,7 @@ void main( void )
         SystemSetting("Z2");                // Save settings in flash
     }
 
-    ScannerPower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, laser off after 1 barcode
+    ScannerPower(TRIGGER | SINGLE, 250);    // Trigger mode, 5 seconds read time, scanner off after 1 barcode
     for(;;)
     {
         if(ReadBarcode(&code) == OK)

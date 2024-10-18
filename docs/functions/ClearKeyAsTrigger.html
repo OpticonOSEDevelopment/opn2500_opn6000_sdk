@@ -16,7 +16,7 @@
 	<TR class=setup>
 		<TD class=item>Description</TD>
 		<TD class=itemdescr>
-			This function makes it possible to use the small clear key as an additional trigger key to enable the laser and read barcodes.
+			This function makes it possible to use the small clear key as an additional trigger key to enable the scanner and read barcodes.
 		</TD>
 	</TR>
 	<TR class=setup>
@@ -77,7 +77,7 @@
     code.text  = bcr_buf;
 
     <A class="clib" href="../functions/ClearKeyAsTrigger.html">ClearKeyAsTrigger</A>(TRUE);            <SPAN class="c-comment">  // This function makes it possible to use the small clear key </SPAN>
-                                        <SPAN class="c-comment">  // as additional trigger key to enable the laser and read barcodes. </SPAN>
+                                        <SPAN class="c-comment">  // as additional trigger key to enable the scanner and read barcodes. </SPAN>
 
     <A class="clib" href="../functions/ScannerPower.html">ScannerPower</A>(SINGLE|TRIGGER, 250);    <SPAN class="c-comment">// Single read / Trigger mode / 5 seconds</SPAN>
 

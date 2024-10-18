@@ -1384,22 +1384,17 @@ void app_main(void)
 #ifdef LOG_STATE
 		LogConnectionState();
 #endif
-
 		//
 		// Transmission state machine
 		//
 		TransmitStateMachine(barcode_read);
-		
 
 		if ((ch = KeyOut()) > 0)
 			last_key_pressed = ch;// Used to determine whether a barcode was read using the clear key or trigger key
 		
 #if !defined(HAS_2D_ENGINE) && !defined(HAS_NO_SCANNER)
 		//
-		// The inclusion of the read mode code from the OPN2002 Bluetooth Demo is due to a bug reported by a 
-		// customer where sometimes the laser of the OPN2005 would not come on after pairing and connecting with iOS devices.
-		// The bug was random, and nearly impossible to isolate or reproduce.  To make sure the scanner always
-		// comes back on, bringing this code back into this demo is needed, however hacky and unfortunate.
+		// Legacy addition due to an old bug in the OPN2005. Most like not need anymore
 		//
 		if (TriggerPressed() && !IsScannerOff())
 			SetReadMode(app.read_mode, app.read_time);

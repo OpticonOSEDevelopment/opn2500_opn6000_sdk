@@ -2,11 +2,11 @@
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
-<TITLE>PutString</TITLE>
+<TITLE>PutString2</TITLE>
 </HEAD>
 
 <BODY>
-<H1>PutString</H1>
+<H1>PutString2</H1>
 
 <TABLE width=100% class=setup>
 	<TR class=setup>
@@ -15,12 +15,12 @@
 	</TR>
 	<TR class=setup>
 		<TD class=item>Description</TD>
-		<TD class=itemdescr><A class=clib HREF="./PutString.html">PutString</A>() transmits a string through the serial communications port that was last opened by <A class=clib HREF="./ComOpen.html">ComOpen()</A>.</TD>
+		<TD class=itemdescr><A class=clib HREF="./PutString2.html">PutString2</A>() transmits a string through the specified communications port</A>.</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
 		<TD class=itemdescr>
-			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutString.html">PutString</A>( <SPAN class=c-keyword>char</SPAN> *data );
+			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutString2.html">PutString2</A>( <SPAN class=c-keyword>char</SPAN> *data );
 		</TD>
 	</TR>
 	<TR class=setup>
@@ -54,7 +54,7 @@
 
     <A class=clib HREF="./ComOpen.html">ComOpen</A>( COM9 );    <SPAN class=c-comment>// Open the COM port for USB-VCP</SPAN>
 
-    <A class=clib HREF="./PutString.html">PutString</A>(buffer);
+    <A class=clib HREF="./PutString2.html">PutString2</A>(COM9, buffer);
 
     <SPAN class=c-keyword>for</SPAN>(;;)
     {

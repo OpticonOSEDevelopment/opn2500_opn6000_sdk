@@ -20,16 +20,17 @@
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
 		<TD class=itemdescr>
-			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutCom2.html">PutCom2</A>( <SPAN class=c-keyword>unsigned int</SPAN> port, <SPAN class=c-keyword>int</SPAN> c );
+			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutCom2.html">PutCom2</A>( <SPAN class=c-keyword>int</SPAN> port, <SPAN class=c-keyword>unsigned char</SPAN> c );
 		</TD>
 	</TR>
 
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
+		
 		<TD class=itemdescr>
-			<H5><SPAN class=c-keyword>unsigned int</SPAN> <I>port</I>, <SPAN class=c-keyword>int</SPAN> <I>c</I></H5>
-
-			<H5><SPAN class=c-keyword>unsigned int</SPAN> <I>port</I></H5>
+			<H5><SPAN class=c-keyword>unsigned char</SPAN> <I>c</I></H5>
+			Character or byte that is to be transmitted
+			<H5><SPAN class=c-keyword>int</SPAN> <I>port</I></H5>
 			port specifies which serial communications port is to be opened. See the table below for details.<BR>
 			<BR>
 			<table class="OPTIONS" width="100%">
@@ -92,13 +93,6 @@
     {
         <SPAN class=c-keyword>if</SPAN>( (ch = <A class=clib HREF="./GetCom2.html">GetCom2</A>( COM9, 0 )) != -1)
         {
-            putchar( ch );
-            <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM9, ch );
-        }
-
-        <SPAN class=c-keyword>if</SPAN>( (ch = getchar()) != EOF)
-        {
-            putchar( ch );
             <A class=clib HREF="./PutCom2.html">PutCom2</A>( COM9, ch );
         }
         <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>

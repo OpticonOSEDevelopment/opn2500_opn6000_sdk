@@ -20,13 +20,13 @@
 	<TR class=setup>
 		<TD class=item>Syntax</TD>
 		<TD class=itemdescr>
-			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutCom.html">PutCom</A>( <SPAN class=c-keyword>int</SPAN> c );
+			<SPAN class=c-keyword>int</SPAN> <A class=clib HREF="./PutCom.html">PutCom</A>( <SPAN class=c-keyword>unsigned char</SPAN> c );
 		</TD>
 	</TR>
 	<TR class=setup>
 		<TD class=item>Arguments</TD>
 		<TD class=itemdescr>
-			<H5><SPAN class=c-keyword>int</SPAN> <I>c</I></H5> c is the character that is to be transmitted.
+			<H5><SPAN class=c-keyword>unsigned char</SPAN> <I>c</I></H5> c is the character that is to be transmitted.
 		</TD>
 	</TR>
 	<TR class=setup>
@@ -57,13 +57,6 @@
     {
         <SPAN class=c-keyword>if</SPAN>( (ch = <A class=clib HREF="./GetCom.html">GetCom</A>( 0 )) != -1)
         {
-            putchar( ch );
-            <A class=clib HREF="./PutCom.html">PutCom</A>( ch );
-        }
-
-        <SPAN class=c-keyword>if</SPAN>( (ch = getchar()) != EOF)
-        {
-            putchar( ch );
             <A class=clib HREF="./PutCom.html">PutCom</A>( ch );
         }
         <A class=clib HREF="./Idle.html">Idle</A>();    <SPAN class=c-comment>// Very important to lower the power consumption</SPAN>

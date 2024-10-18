@@ -8,7 +8,7 @@ void main( void )
 
     ComOpen( COM9 );    // Open the COM port for USB-VCP
 
-    PutString(buffer);
+    PutString2(COM9, buffer);
 
     for(;;)
     {

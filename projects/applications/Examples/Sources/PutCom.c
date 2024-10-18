@@ -12,13 +12,6 @@ void main( void )
     {
         if( (ch = GetCom( 0 )) != -1)
         {
-            putchar( ch );
-            PutCom( ch );
-        }
-
-        if( (ch = getchar()) != EOF)
-        {
-            putchar( ch );
             PutCom( ch );
         }
         Idle();    // Very important to lower the power consumption
